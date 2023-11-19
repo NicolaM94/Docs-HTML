@@ -1,0 +1,491 @@
+.register-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-image: url("https://images.unsplash.com/photo-1579444741963-5ae219cfe27c?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDF8fGZvcm18ZW58MHx8fHwxNzAwMTgxMDEwfDA&ixlib=rb-4.0.3&w=1500");
+}
+.register-navbar-interactive {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-threeunits);
+  padding-right: var(--dl-space-space-threeunits);
+  padding-bottom: var(--dl-space-space-halfunit);
+  justify-content: space-between;
+  background-color: rgba(122, 163, 255, 0.47);
+}
+.register-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: space-between;
+  flex-direction: column;
+}
+.register-image {
+  flex: 1;
+  width: 46px;
+  height: 67px;
+}
+.register-desktop-menu {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.register-links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.register-text {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+}
+.register-text01 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
+}
+.register-text02 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
+}
+.register-text03 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
+}
+.register-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.register-login {
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Poppins";
+  font-weight: 600;
+  border-width: 0px;
+  margin-right: var(--dl-space-space-twounits);
+  background-color: rgba(113, 153, 243, 0);
+}
+.register-register {
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Poppins";
+  font-weight: 600;
+  border-color: rgba(21, 32, 239, 0.43);
+  border-width: 2px;
+  background-color: rgba(255, 169, 60, 0);
+}
+.register-burger-menu {
+  display: none;
+}
+.register-icon {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.register-mobile-menu {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  padding: 32px;
+  z-index: 100;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.register-nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.register-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-threeunits);
+  justify-content: space-between;
+}
+.register-logo {
+  height: 2rem;
+}
+.register-close-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-icon02 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.register-links1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.register-text07 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.register-text08 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.register-text09 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.register-text10 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.register-buttons1 {
+  display: flex;
+  margin-top: var(--dl-space-space-unit);
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.register-login1 {
+  margin-right: var(--dl-space-space-twounits);
+}
+.register-icon04 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.register-icon06 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.register-icon08 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.register-text11 {
+  font-size: 4em;
+  margin-top: var(--dl-space-space-threeunits);
+  font-family: "Poppins";
+}
+.register-form {
+  width: 1344px;
+  height: 672px;
+  display: flex;
+  position: relative;
+  margin-top: var(--dl-space-space-threeunits);
+  align-items: center;
+  margin-left: var(--dl-space-space-unit);
+  border-color: var(--dl-color-gray-black);
+  border-width: 0px;
+  margin-right: var(--dl-space-space-unit);
+  border-radius: 15px;
+  margin-bottom: var(--dl-space-space-unit);
+  justify-content: flex-start;
+  background-color: rgba(253, 253, 253, 0.86);
+}
+.register-textinput {
+  top: 41px;
+  left: 44px;
+  width: 576px;
+  height: 73px;
+  position: absolute;
+  font-size: 20px;
+}
+.register-textinput1 {
+  top: 175px;
+  left: 41px;
+  width: 576px;
+  height: 73px;
+  position: absolute;
+  font-size: 20px;
+}
+.register-textinput2 {
+  top: 315px;
+  left: 41px;
+  width: 576px;
+  height: 73px;
+  position: absolute;
+  font-size: 20px;
+}
+.register-textinput3 {
+  top: 41px;
+  right: 41px;
+  width: 576px;
+  height: 73px;
+  position: absolute;
+  font-size: 20px;
+}
+.register-textinput4 {
+  top: 175px;
+  right: 41px;
+  width: 576px;
+  height: 73px;
+  position: absolute;
+  font-size: 20px;
+}
+.register-textinput5 {
+  top: 315px;
+  right: 41px;
+  width: 576px;
+  height: 73px;
+  position: absolute;
+  font-size: 20px;
+}
+.register-button {
+  top: 487px;
+  left: 512px;
+  color: #ffffff;
+  width: 317px;
+  height: 77px;
+  position: absolute;
+  font-size: 24px;
+  font-family: "Poppins";
+  background-color: #85a6ff;
+}
+@media(max-width: 1200px) {
+  .register-form {
+    width: 1156px;
+  }
+  .register-textinput {
+    width: 519px;
+  }
+  .register-textinput1 {
+    width: 522px;
+  }
+  .register-textinput2 {
+    width: 522px;
+  }
+  .register-textinput3 {
+    width: 523px;
+  }
+  .register-textinput4 {
+    width: 521px;
+  }
+  .register-textinput5 {
+    width: 520px;
+  }
+  .register-button {
+    top: 455px;
+    left: 417px;
+  }
+}
+@media(max-width: 991px) {
+  .register-form {
+    width: 930px;
+    height: 717px;
+  }
+  .register-textinput {
+    width: 405px;
+  }
+  .register-textinput1 {
+    width: 405px;
+  }
+  .register-textinput2 {
+    width: 405px;
+  }
+  .register-textinput3 {
+    width: 405px;
+  }
+  .register-textinput4 {
+    width: 405px;
+  }
+  .register-textinput5 {
+    width: 405px;
+  }
+  .register-button {
+    top: 478px;
+    left: 305px;
+  }
+}
+@media(max-width: 767px) {
+  .register-navbar-interactive {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .register-desktop-menu {
+    display: none;
+  }
+  .register-burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .register-text07 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .register-text08 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .register-text09 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .register-text10 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .register-login1 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    border-width: 2px;
+  }
+  .register-register1 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    border-width: 2px;
+  }
+  .register-form {
+    width: 728px;
+    height: 666px;
+  }
+  .register-textinput {
+    width: 300px;
+  }
+  .register-textinput1 {
+    width: 300px;
+  }
+  .register-textinput2 {
+    width: 300px;
+  }
+  .register-textinput3 {
+    width: 300px;
+  }
+  .register-textinput4 {
+    width: 300px;
+  }
+  .register-textinput5 {
+    width: 300px;
+  }
+  .register-button {
+    top: 479px;
+    left: 203px;
+  }
+}
+@media(max-width: 479px) {
+  .register-navbar-interactive {
+    padding: var(--dl-space-space-unit);
+    background-color: rgba(127, 178, 255, 0.35);
+  }
+  .register-mobile-menu {
+    padding: 16px;
+    background-color: #efefef;
+  }
+  .register-text07 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .register-text08 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .register-text09 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .register-text10 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .register-login1 {
+    border-width: 2px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  .register-register1 {
+    border-width: 2px;
+  }
+  .register-form {
+    width: 425px;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .register-textinput {
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: 50px;
+    margin: auto;
+  }
+  .register-textinput1 {
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: 50px;
+    margin: auto;
+  }
+  .register-textinput2 {
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: 50px;
+    margin: auto;
+  }
+  .register-textinput3 {
+    top: 107px;
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: 50px;
+    margin: auto;
+  }
+  .register-textinput4 {
+    top: 244px;
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: 50px;
+    margin: auto;
+  }
+  .register-textinput5 {
+    top: 392px;
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: 50px;
+    margin: auto;
+  }
+  .register-button {
+    top: 500px;
+    left: 0px;
+    right: 0px;
+    width: 327px;
+    height: 54px;
+    margin: auto;
+    position: absolute;
+  }
+}

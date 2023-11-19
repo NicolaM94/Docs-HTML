@@ -1,0 +1,156 @@
+.passrecoverymail-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.passrecoverymail-text {
+  color: #0c0c0c;
+  font-size: 4em;
+  margin-top: var(--dl-space-space-fourunits);
+  font-family: "Poppins";
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+}
+.passrecoverymail-text01 {
+  color: rgb(12, 12, 12);
+  font-size: 2.5em;
+  font-style: normal;
+  margin-top: var(--dl-space-space-unit);
+  font-family: "Poppins";
+  font-weight: 700;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+}
+.passrecoverymail-text02 {
+  color: rgb(12, 12, 12);
+  font-size: 24px;
+  margin-top: var(--dl-space-space-threeunits);
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 1.5;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+}
+.passrecoverymail-text03 {
+  font-style: normal;
+}
+.passrecoverymail-text05 {
+  font-style: normal;
+}
+.passrecoverymail-link {
+  color: #0015ff;
+  font-size: 20px;
+  margin-top: var(--dl-space-space-twounits);
+  text-align: center;
+  font-family: "Poppins";
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  margin-bottom: var(--dl-space-space-twounits);
+}
+.passrecoverymail-text09 {
+  color: rgb(12, 12, 12);
+  font-size: 14px;
+  font-style: normal;
+  margin-top: var(--dl-space-space-twounits);
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 1.5;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+}
+.passrecoverymail-container1 {
+  width: auto;
+  height: 214px;
+  display: flex;
+  margin-top: var(--dl-space-space-twounits);
+  align-items: flex-start;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  margin-bottom: var(--dl-space-space-unit);
+  justify-content: center;
+}
+.passrecoverymail-image {
+  width: 298px;
+  height: 153px;
+  margin-top: var(--dl-space-space-halfunit);
+  object-fit: cover;
+  margin-right: var(--dl-space-space-unit);
+}
+.passrecoverymail-image1 {
+  width: 200px;
+  margin-top: var(--dl-space-space-fiveunits);
+  object-fit: cover;
+}
+@media(max-width: 1200px) {
+  .passrecoverymail-text09 {
+    margin-left: var(--dl-space-space-twounits);
+    margin-right: var(--dl-space-space-twounits);
+  }
+}
+@media(max-width: 479px) {
+  .passrecoverymail-container {
+    background-color: #ffffff;
+  }
+  .passrecoverymail-text {
+    font-size: 5em;
+  }
+  .passrecoverymail-text01 {
+    margin-top: var(--dl-space-space-oneandhalfunits);
+    text-align: center;
+  }
+  .passrecoverymail-text02 {
+    color: rgb(12, 12, 12);
+    font-size: 22px;
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+    margin-bottom: var(--dl-space-space-halfunit);
+  }
+  .passrecoverymail-text03 {
+    font-style: normal;
+  }
+  .passrecoverymail-text04 {
+    font-style: normal;
+  }
+  .passrecoverymail-text05 {
+    font-style: normal;
+  }
+  .passrecoverymail-text06 {
+    font-style: normal;
+  }
+  .passrecoverymail-text07 {
+    font-style: normal;
+  }
+  .passrecoverymail-text08 {
+    font-style: normal;
+  }
+  .passrecoverymail-text09 {
+    font-size: 14px;
+    font-style: normal;
+    margin-top: var(--dl-space-space-halfunit);
+    font-weight: 400;
+  }
+  .passrecoverymail-container1 {
+    width: 445px;
+    height: 303px;
+    margin-top: var(--dl-space-space-oneandhalfunits);
+    align-items: center;
+    margin-bottom: var(--dl-space-space-unit);
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .passrecoverymail-image {
+    width: 297px;
+  }
+  .passrecoverymail-image1 {
+    margin-top: var(--dl-space-space-oneandhalfunits);
+    margin-left: 0px;
+  }
+}
