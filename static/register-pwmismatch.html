@@ -91,16 +91,16 @@
           </div>
           <div data-thq="thq-navbar-nav" class="register-desktop-menu">
             <nav class="register-links">
-              <span class="register-text">Guida</span>
-              <span class="register-text01">Privacy &amp; Rules</span>
-              <span class="register-text02">Team</span>
-              <span class="register-text03">News</span>
+              <span class="register-text"><a href="./userguide.pdf">Guida</a></span>
+              <span class="register-text01"><a href="./Privacy_and_rules_argeement.pdf">Privacy &amp; Rules</a></span>
+              <span class="register-text02"><a href="https://studiomartinagottardo.it/it/home/team/i-professionisti">Team</a></span>
+              <span class="register-text03"><a href="https://studiomartinagottardo.it/it/home/nws/news">News</a></span>
             </nav>
             <div class="register-buttons">
-              <button class="register-login button">Login</button>
+              <button class="register-login button"><a href="./login.html">Login</a></button>
               <button class="register-register button">
                 <span>
-                  <span>Registrati</span>
+                  <span><a href="./register.html">Registrati</a></span>
                   <br />
                 </span>
               </button>
@@ -130,14 +130,14 @@
                 </div>
               </div>
               <nav class="register-links1">
-                <span class="register-text07">Guida</span>
-                <span class="register-text08">Privacy &amp; Rules</span>
-                <span class="register-text09">Team</span>
-                <span class="register-text10">News</span>
+                <span class="register-text07"><a href="./userguide.pdf">Guida</a></span>
+                <span class="register-text08"><a href="./Privacy_and_rules_argeement.pdf">Privacy &amp; Rules</a></span>
+                <span class="register-text09"><a href="https://studiomartinagottardo.it/it/home/team/i-professionisti">Team</a></span>
+                <span class="register-text10"><a href="https://studiomartinagottardo.it/it/home/nws/news">News</a></span>
               </nav>
               <div class="register-buttons1">
-                <button class="register-login1 button">Login</button>
-                <button class="button register-register1">Register</button>
+                <button class="register-login1 button"><a href="./login.html">Login</a></button>
+                <button class="button register-register1"><a href="./register.html">Registrati</a></button>
               </div>
             </div>
             <div>
@@ -164,41 +164,53 @@
           </div>
         </header>
         <h1 class="register-text11">Registrati</h1>
-        <form class="register-form">
+        <p style="color: red;font-weight:bold;margin-top:10px"><u>Le due password non coincidono! Riprova</u></p>
+        <form class="register-form" method="post">
           <input
+            name="name"
             type="text"
-            placeholder="Nome"
+            required
+            placeholder="Nome \ Denominazione"
             class="register-textinput input"
           />
           <input
+            name="surname"
             type="text"
-            placeholder="Codice fiscale"
-            class="register-textinput1 input"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            class="register-textinput2 input"
-          />
-          <input
-            type="text"
-            enctype="Cognome"
-            placeholder="Cognome"
+            placeholder="Cognome (Solo persone fisiche)"
             class="register-textinput3 input"
           />
           <input
+            name="fiscalcode"
             type="text"
-            enctype="Cognome"
+            required
+            placeholder="Codice fiscale \ Partita IVA"
+            minlength="11"
+            maxlength="16"
+            class="register-textinput1 input"
+          />
+          <input
+            name="email"
+            type="email"
+            required
             placeholder="Indirizzo e-mail"
             class="register-textinput4 input"
           />
           <input
+            name="password"
             type="password"
-            enctype="Cognome"
-            placeholder="Ripeti password"
+            required
+            placeholder="Password"
+            minlength="10"
+            class="register-textinput2 input"
+          />
+          <input
+            name="repassword"
+            type="password"
+            required 
+            placeholder="Ripeti password" 
             class="register-textinput5 input"
           />
-          <button type="button" class="register-button button">Invia</button>
+          <button type="submit" class="register-button button" formaction="/registrationrequest">Invia</button>
         </form>
       </div>
     </div>

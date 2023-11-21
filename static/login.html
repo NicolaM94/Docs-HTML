@@ -83,22 +83,24 @@
       <div class="login-container">
         <header data-thq="thq-navbar" class="login-navbar-interactive">
           <div class="login-container1">
-            <img
+            <a href="/">
+              <img
               alt="logo"
               src="public/external/loghetto-1500w.png"
               class="login-image"
             />
+            </a>
           </div>
           <div data-thq="thq-navbar-nav" class="login-desktop-menu">
             <nav class="login-links">
-              <span class="login-text">Guida</span>
-              <span class="login-text01">Privacy &amp; Rules</span>
-              <span class="login-text02">Team</span>
-              <span class="login-text03">News</span>
+              <span class="login-text"><a href="./userguide.pdf">Guida</a></span>
+              <span class="login-text01"><a href="./Privacy_and_rules_argeement.pdf">Privacy &amp; Rules</a></span>
+              <span class="login-text02"><a href="https://studiomartinagottardo.it/it/home/team/i-professionisti">Team</a></span>
+              <span class="login-text03"><a href="https://studiomartinagottardo.it/it/home/nws/news">News</a></span>
             </nav>
             <div class="login-buttons">
-              <button class="login-login button">Login</button>
-              <button class="login-register button">Registrati</button>
+              <button class="login-login button"><a href="./login.html">Login</a></button>
+              <button class="login-register button"><a href="./register.html">Registrati</a></button>
             </div>
           </div>
           <div data-thq="thq-burger-menu" class="login-burger-menu">
@@ -125,14 +127,14 @@
                 </div>
               </div>
               <nav class="login-links1">
-                <span class="login-text04">Guida</span>
-                <span class="login-text05">Privacy &amp; Rules</span>
-                <span class="login-text06">Team</span>
-                <span class="login-text07">News</span>
+                <span class="login-text04"><a href="./userguide.pdf">Guida</a></span>
+                <span class="login-text05"><a href="./Privacy_and_rules_argeement.pdf">Privacy &amp; Rules</a></span>
+                <span class="login-text06"><a href="https://studiomartinagottardo.it/it/home/team/i-professionisti">Team</a></span>
+                <span class="login-text07"><a href="https://studiomartinagottardo.it/it/home/nws/news">News</a></span>
               </nav>
               <div class="login-buttons1">
-                <button class="login-login1 button">Login</button>
-                <button class="button login-register1">Register</button>
+                <button class="login-login1 button"><a href="./login.html">Login</a></button>
+                <button class="button login-register1"><a href="./register.html">Registrati</a></button>
               </div>
             </div>
             <div>
@@ -153,22 +155,24 @@
           </div>
         </header>
         <h1 class="login-text08">Login</h1>
-        <form class="login-form">
+        <form class="login-form" method="post">
           <input
+            name="passwordfield"
             type="password"
             placeholder="Password"
             class="login-textinput input"
           />
-          <button type="button" class="login-button button">Login</button>
+          <button type="submit" formaction="/loginrequest" class="login-button button">Login</button>
           <input
             type="text"
             required=""
             autofocus=""
+            name="usernamefield"
             placeholder="Username"
             autocomplete="Username"
             class="login-textinput1 input"
           />
-          <span class="login-text09">Ho dimenticato la password!</span>
+          <span class="login-text09"><a href="./passrecoveryrequest.html">Ho dimenticato la password!</a></span>
         </form>
       </div>
     </div>

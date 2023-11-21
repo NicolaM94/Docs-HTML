@@ -213,7 +213,7 @@
 .index-text10 {
   font-size: 11px;
   align-self: stretch;
-  margin-top: 125px;
+  margin-top: 110px;
   text-align: center;
   margin-left: var(--dl-space-space-unit);
   margin-right: var(--dl-space-space-unit);
@@ -304,7 +304,7 @@
     margin-left: 0px;
   }
   .index-text10 {
-    margin-top: var(--dl-space-space-sixunits);
+    margin-top: var(--dl-space-space-fiveunits);
     margin-left: var(--dl-space-space-unit);
     margin-right: var(--dl-space-space-unit);
     margin-bottom: var(--dl-space-space-unit);
