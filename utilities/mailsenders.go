@@ -21,7 +21,7 @@ func SendCodeMail(receiver, code string) error {
 	smtpPort := "587"
 
 	auth := smtp.PlainAuth("", from, password, smtpHost)
-	t, _ := template.ParseFiles("./static/codemail.html", "./static/codemail.css")
+	t, _ := template.ParseFiles("./static/codemail.html")
 
 	var body bytes.Buffer
 

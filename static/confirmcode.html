@@ -82,25 +82,24 @@
 
       <div class="confirmcode-container">
         <header data-thq="thq-navbar" class="confirmcode-navbar-interactive">
-          <div class="confirmcode-container1">
-            <img
-              alt="logo"
-              src="public/external/loghetto-1500w.png"
-              class="confirmcode-image"
-            />
+          <div class="confirmcode-container1"> <a href="/"><img
+            alt="logo"
+            src="public/external/loghetto-1500w.png"
+            class="confirmcode-image"
+          /></a>
           </div>
           <div data-thq="thq-navbar-nav" class="confirmcode-desktop-menu">
             <nav class="confirmcode-links">
-              <span class="confirmcode-text">Guida</span>
-              <span class="confirmcode-text01">Privacy &amp; Rules</span>
-              <span class="confirmcode-text02">Team</span>
-              <span class="confirmcode-text03">News</span>
+              <span class="confirmcode-text"><a href="./userguide.pdf">Guide</a></span>
+              <span class="confirmcode-text01"><a href="./Privacy_and_rules_argeement.pdf">Privacy &amp; Rules</a></span>
+              <span class="confirmcode-text02"><a href="https://studiomartinagottardo.it/it/home/team/i-professionisti">Team</a></span>
+              <span class="confirmcode-text03"><a href="https://studiomartinagottardo.it/it/home/nws/news">News</a></span>
             </nav>
             <div class="confirmcode-buttons">
-              <button class="confirmcode-login button">Login</button>
+              <button class="confirmcode-login button"><a href="./login.html">Login</a></button>
               <button class="confirmcode-register button">
                 <span>
-                  <span>Registrati</span>
+                  <span><a href="./register.html">Registrati</a></span>
                   <br />
                 </span>
               </button>
@@ -130,14 +129,14 @@
                 </div>
               </div>
               <nav class="confirmcode-links1">
-                <span class="confirmcode-text07">Guida</span>
-                <span class="confirmcode-text08">Privacy &amp; Rules</span>
-                <span class="confirmcode-text09">Team</span>
-                <span class="confirmcode-text10">News</span>
+                <span class="confirmcode-text07"><a href="./userguide.pdf">Guide</a></span>
+                <span class="confirmcode-text08"><a href="./Privacy_and_rules_argeement.pdf">Privacy &amp; Rules</a></span>
+                <span class="confirmcode-text09"><a href="https://studiomartinagottardo.it/it/home/team/i-professionisti">Team</a></span>
+                <span class="confirmcode-text10"><a href="https://studiomartinagottardo.it/it/home/nws/news">News</a></span>
               </nav>
               <div class="confirmcode-buttons1">
-                <button class="confirmcode-login1 button">Login</button>
-                <button class="button confirmcode-register1">Register</button>
+                <button class="confirmcode-login1 button"><a href="./login.html">Login</a></button>
+                <button class="button confirmcode-register1"><a href="./register.html">Registrati</a></button>
               </div>
             </div>
             <div>
@@ -171,15 +170,16 @@
           Ti abbiamo inviato un codice alla mail indicata. Inseriscilo qui sotto
           per confermare la richiesta!
         </span>
-        <form class="confirmcode-form">
+        <form class="confirmcode-form" method="post">
           <input
+            name="inserted-code"
             type="text"
-            required=""
+            required
             autofocus=""
             placeholder="es: XXXYYYZZZ"
             class="confirmcode-textinput input"
           />
-          <button type="button" class="confirmcode-button button">
+          <button type="submit" class="confirmcode-button button" formaction="/codevalidator">
             <span>
               <span>Valida codice</span>
               <br />

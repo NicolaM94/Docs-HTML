@@ -6,17 +6,19 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+//TODO: Change hard coded db name with path from settings
+
 // Base insertion of a row into the upchardb.db
-func InsertRow(username, password string) error {
+func InsertRow(name, surname, fiscalcode, email, password string) error {
 	db, err := sql.Open("sqlite3", "upchardb.db")
 	if err != nil {
 		return err
 	}
-	stmt, err := db.Prepare("INSERT INTO users (username,password) VALUES(?,?)")
+	stmt, err := db.Prepare("INSERT INTO users (name,surname,fiscalcode,email,password) VALUES(?,?,?,?,?)")
 	if err != nil {
 		return err
 	}
-	_, err = stmt.Exec(username, password)
+	_, err = stmt.Exec(name, surname, fiscalcode, email, password)
 	if err != nil {
 		return err
 	}
@@ -38,4 +40,46 @@ func DeleteRow(username, password string) error {
 		return err
 	}
 	return nil
+}
+
+// Query db with statement
+type Row struct {
+	Id         int
+	Name       string
+	Surname    string
+	FiscalCode string
+	Email      string
+	Password   string
+}
+
+func QueryRow(statement string) ([]Row, error) {
+	db, err := sql.Open("sqlite3", "upchardb.db")
+	if err != nil {
+		return nil, err
+	}
+	rows, err := db.Query(statement)
+	if err != nil {
+		return nil, err
+	}
+	var collector []Row
+	var entry Row
+	for rows.Next() {
+		err = rows.Scan(&entry.Id, &entry.Name, &entry.Surname, &entry.FiscalCode, &entry.Email, &entry.Password)
+		if err != nil {
+			return nil, err
+		}
+		collector = append(collector, entry)
+	}
+	return collector, nil
+}
+
+// Search functions in rows
+func SearchInRows(target string, rows []Row) bool {
+	for g := range rows {
+		curretRow := rows[g]
+		if target == curretRow.FiscalCode || target == curretRow.Email {
+			return true
+		}
+	}
+	return false
 }
