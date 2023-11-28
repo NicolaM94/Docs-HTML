@@ -22,9 +22,23 @@ func RegistrationRequest(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "./register-pwmismatch.html", http.StatusFound)
 	}
 
-	var code string = utilities.GenerateCode()
-	var pwHash string = utilities.HashNSault(name + surname + email + password)
+	// Checks if user is already registered
+	rows, err := utilities.QueryRow("select * from users")
+	if err != nil {
+		panic(err)
+	}
+	if utilities.SearchInRows(email, rows) {
+		t, _ := template.ParseFiles("./static/already-registered.html")
+		fmt.Println("Already registered")
+		t.Execute(w, nil)
+		return
+	}
 
+	// Generate the code and the password hash
+	var code string = utilities.GenerateCode()
+	var pwHash string = utilities.HashNSault(email + password)
+
+	// Set cookie for reception in the next page
 	http.SetCookie(w, utilities.GenerateSecureCookie("name", name))
 	http.SetCookie(w, utilities.GenerateSecureCookie("surname", surname))
 	http.SetCookie(w, utilities.GenerateSecureCookie("fiscalcode", fiscalcode))
@@ -33,8 +47,10 @@ func RegistrationRequest(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, utilities.GenerateSecureCookie("code", code))
 	http.SetCookie(w, utilities.GenerateSecureCookie("type", "registration"))
 
+	// Sends mail with the code
 	fmt.Println("SendCodeMail complains about: ", utilities.SendCodeMail(email, code))
 
+	// Parses the confirmcode page and directs there
 	t, _ := template.ParseFiles("./static/confirmcode.html")
 	t.Execute(w, nil)
 }

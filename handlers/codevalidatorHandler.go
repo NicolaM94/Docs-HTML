@@ -36,6 +36,7 @@ func CodeValidatorHandler(w http.ResponseWriter, r *http.Request) {
 
 REGISTRATION:
 	{
+		fmt.Println("Registration request")
 		cookieName, err := utilities.DecodeSecureCookie("name", r)
 		if err != nil {
 			panic(err)
@@ -57,17 +58,6 @@ REGISTRATION:
 			panic(err)
 		}
 
-		// Checks if user is already registered
-		rows, err := utilities.QueryRow("select * from users")
-		if err != nil {
-			panic(err)
-		}
-		if utilities.SearchInRows(cookieMail["email"], rows) {
-			t, _ := template.ParseFiles("./static/already-registered.html")
-			fmt.Println("Already registered")
-			t.Execute(w, nil)
-		}
-
 		err = utilities.InsertRow(cookieName["name"], cookieSurname["surname"], cookieFiscalCode["fiscalcode"], cookieMail["email"], cookiePassword["password"])
 		if err != nil {
 			panic(err)
@@ -78,6 +68,8 @@ REGISTRATION:
 
 LOGIN:
 	{
+		fmt.Println("Login asked")
+		fmt.Println("Login ended")
 
 	}
 
