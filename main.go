@@ -2,10 +2,15 @@ package main
 
 import (
 	"docs/handlers"
+	"docs/utilities"
+	"fmt"
 	"net/http"
 )
 
 func main() {
+
+	fmt.Println(utilities.HashNSault("mamma" + "papà"))
+	fmt.Println(utilities.HashNSault("nonno" + "nonna"))
 
 	mux := http.NewServeMux()
 	mux.Handle("/", http.FileServer(http.Dir("./static")))

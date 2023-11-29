@@ -57,6 +57,7 @@ func QueryRow(statement string) ([]Row, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer db.Close()
 	rows, err := db.Query(statement)
 	if err != nil {
 		return nil, err

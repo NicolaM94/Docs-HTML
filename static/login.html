@@ -157,21 +157,22 @@
         <h1 class="login-text08">Login</h1>
         <form class="login-form" method="post">
           <input
+            type="text"
+            required
+            autofocus=""
+            name="emailfield"
+            placeholder="Email"
+            class="login-textinput1 input"
+          />
+          <input
+            required
             name="passwordfield"
             type="password"
             placeholder="Password"
             class="login-textinput input"
           />
           <button type="submit" formaction="/loginrequest" class="login-button button">Login</button>
-          <input
-            type="text"
-            required=""
-            autofocus=""
-            name="usernamefield"
-            placeholder="Username"
-            autocomplete="Username"
-            class="login-textinput1 input"
-          />
+          
           <span class="login-text09"><a href="./passrecoveryrequest.html">Ho dimenticato la password!</a></span>
         </form>
       </div>

@@ -8,7 +8,7 @@ import (
 // Returns the hash of the give str string.
 func Hasher(str string) string {
 	src := sha256.New()
-	src.Sum([]byte(str))
+	src.Write([]byte(str))
 	res := src.Sum(nil)
 
 	return base64.StdEncoding.EncodeToString([]byte(res))
