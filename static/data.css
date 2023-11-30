@@ -186,7 +186,7 @@
 }
 .data-ul {
   width: 1853px;
-  height: 751px;
+  height:100%;
   align-self: center;
   margin-top: var(--dl-space-space-unit);
   margin-left: var(--dl-space-space-unit);
@@ -194,7 +194,7 @@
   border-width: 3px;
   margin-right: var(--dl-space-space-unit);
   margin-bottom: var(--dl-space-space-unit);
-  background-color: rgba(241, 247, 255, 0.61);
+  background-color: rgba(253, 254, 255, 0.95);
 }
 .data-li {
   font-size: 24px;

@@ -14,6 +14,23 @@ type Document struct {
 	Type string
 	Date string
 	Path string
+	Icon string
+}
+
+// Class used to pass data to html
+type DataToPass struct {
+	Email string
+	Data  []Document
+}
+
+// Function to check if test is in arrayOfString
+func inArray(test string, arrayOfString []string) bool {
+	for a := range arrayOfString {
+		if arrayOfString[a] == test {
+			return true
+		}
+	}
+	return false
 }
 
 // Returns the extension type of the given name file
@@ -34,7 +51,7 @@ func parseWheight(wgt int64) string {
 	}
 	stringed := strings.SplitAfter(fmt.Sprintf("%v", res), ".")
 	out := stringed[0][:len(stringed[0])-1] + "."
-	if len(stringed) == 1 {
+	if len(stringed) <= 1 {
 		out += "00"
 	} else {
 		out += stringed[1][:2]
@@ -56,11 +73,36 @@ func parseWheight(wgt int64) string {
 	return out
 }
 
+// Returns the icon path to set it in the data field
+func SetIcon(name string) (out string) {
+	parts := strings.SplitAfter(name, ".")
+	filetype := strings.ToUpper(parts[len(parts)-1])
+	base := "/public/icons/"
+	if inArray(filetype, []string{"7Z", "RAR", "CPIO", "LBR", "ISO", "DMG", "JAR"}) {
+		out = base + "rar.png"
+	} else if inArray(filetype, []string{"CSV", "XLSX"}) {
+		out = base + "excellico.png"
+	} else if inArray(filetype, []string{"MP3,M4A,FLAC,WAV,WMA,AAC"}) {
+		out = base + "musicico.png"
+	} else if filetype == "PDF" {
+		out = base + "pdfico.png"
+	} else if filetype == "PPTX" {
+		out = base + "powerpico.png"
+	} else if inArray(filetype, []string{"PNG", "JPG", "GIF", "SVG"}) {
+		out = base + "images.png"
+	} else if filetype == "TXT" {
+		out = base + "txtico.png"
+	} else if inArray(filetype, []string{"MP4", "MOV", "WMV", "AVI", "AVCHD", "FLV", "F4V", "SWF", "MKV", "WEBM", "HTML5", "MPEG"}) {
+		out = base + "videoico.png"
+	} else {
+		out = base + "document-round.svg"
+	}
+	return out
+}
+
 // Collects documents as Document class from the given path
-func CollectDocuments(fromPath string) (docs []Document) {
-
-	err := filepath.WalkDir(fromPath, func(path string, d fs.DirEntry, err error) error {
-
+func CollectDocuments(fromPath string) (docs []Document, err error) {
+	err = filepath.WalkDir(fromPath, func(path string, d fs.DirEntry, err error) error {
 		if !d.IsDir() {
 			info, err := d.Info()
 			if err != nil {
@@ -69,16 +111,17 @@ func CollectDocuments(fromPath string) (docs []Document) {
 			tempDoc := Document{}
 			tempDoc.Name = info.Name()
 			tempDoc.Date = info.ModTime().Format("dd-mm-yyyy")
-			tempDoc.Size = parseWheight(info.Size())
+			tempDoc.Size = string(info.Size())
 			tempDoc.Type = getExtentionType(info.Name())
 			tempDoc.Path = path
+			tempDoc.Icon = SetIcon(info.Name())
 
 			docs = append(docs, tempDoc)
 		}
 		return nil
 	})
 	if err != nil {
-		return nil
+		return nil, err
 	}
-	return nil
+	return
 }

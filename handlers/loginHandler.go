@@ -37,9 +37,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	// Verifies that the password is the same
 	if tempHash == dbPass {
-		t, _ := template.ParseFiles("/datacollection")
-		t.Execute(w, nil)
-		return
+		http.Redirect(w, r, "/datacollection", http.StatusFound)
 	}
 
 	// If password is not the same, return the login page with a warning message.
