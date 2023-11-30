@@ -8,6 +8,7 @@ import (
 	"text/template"
 )
 
+// TODO: Implementa ricerca e ordinamento
 func DataCollection(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve email cookie
