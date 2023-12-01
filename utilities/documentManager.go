@@ -23,6 +23,18 @@ type DataToPass struct {
 	Data  []Document
 }
 
+func InString(searchfor, in string) bool {
+	if len(searchfor) > len(in) {
+		return false
+	}
+	for n := 0; n <= len(in)-len(searchfor); n++ {
+		if in[n:n+len(searchfor)] == searchfor {
+			return true
+		}
+	}
+	return false
+}
+
 // Function to check if test is in arrayOfString
 func inArray(test string, arrayOfString []string) bool {
 	for a := range arrayOfString {

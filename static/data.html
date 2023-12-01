@@ -152,7 +152,25 @@
             </div>
           </div>
         </header>
+
+        <div style="text-align: center">
         <h1 class="data-text11">Benvenuto {{.Email}}</h1>
+        <form method="post" name="searchform">
+          <input type="text" name="searchpattern" style="border-color: rgb(72, 92, 179); border-width:2px">
+          <button type="submit" formaction="/searchdocs" style="font-weight: 500;border-color:rgb(72, 92, 179); border-width:2px">Cerca</button>
+        </form>
+        <form method="post" style="margin-top:5%;">
+          <label for="orderby" style="font-size: 20;font-weight:500;">Ordina per</label>
+          <select name="orderby" id="orderby">
+            <optgroup>
+              <option value="name" style="font-size: 20;font-weight:500;">Nome</option>
+              <option value="type" style="font-size: 20;font-weight:500;">Tipo</option>
+              <option value="size" style="font-size: 20;font-weight:500;">Dimensione</option>
+              <option value="date" style="font-size: 20;font-weight:500;">Data</option>
+            </optgroup>
+          </select>
+        </form>
+      </div>
         <ul class="data-ul list">
           {{range .Data}}
           <li class="data-li list-item">
