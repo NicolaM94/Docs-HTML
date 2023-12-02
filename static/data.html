@@ -161,7 +161,7 @@
         </form>
         <form method="post" style="margin-top:5%;">
           <label for="orderby" style="font-size: 20;font-weight:500;">Ordina per</label>
-          <select name="orderby" id="orderby">
+          <select name="orderby" id="orderby" style="border-color: black; border-width:1px">
             <optgroup>
               <option value="name" style="font-size: 20;font-weight:500;">Nome</option>
               <option value="type" style="font-size: 20;font-weight:500;">Tipo</option>
@@ -169,6 +169,7 @@
               <option value="date" style="font-size: 20;font-weight:500;">Data</option>
             </optgroup>
           </select>
+          <button type="submit" formaction="/orderdocs" style="font-weight: 500;border-color:rgb(72, 92, 179); border-width:2px;">Ordina</button>
         </form>
       </div>
         <ul class="data-ul list">

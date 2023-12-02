@@ -2,13 +2,10 @@ package main
 
 import (
 	"docs/handlers"
-	"docs/utilities"
 	"net/http"
 )
 
 func main() {
-
-	println(utilities.InString("", "hsydonadsgyabuz"))
 
 	mux := http.NewServeMux()
 	mux.Handle("/", http.FileServer(http.Dir("./static")))
@@ -17,6 +14,7 @@ func main() {
 	mux.HandleFunc("/codevalidator", handlers.CodeValidatorHandler)
 	mux.HandleFunc("/datacollection", handlers.DataCollection)
 	mux.HandleFunc("/searchdocs", handlers.SearchDocs)
+	mux.HandleFunc("/orderdocs", handlers.OrderDocs)
 
 	e := http.ListenAndServe(":3333", mux)
 	if e != nil {

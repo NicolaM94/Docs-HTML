@@ -23,6 +23,7 @@ type DataToPass struct {
 	Data  []Document
 }
 
+// Function to check if the string "in" contains the string "searchfor"
 func InString(searchfor, in string) bool {
 	if len(searchfor) > len(in) {
 		return false
