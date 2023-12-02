@@ -54,7 +54,7 @@ func getExtentionType(name string) string {
 
 func parseWheight(wgt int64) string {
 	if wgt == 0 {
-		return fmt.Sprint(0) + "Kb"
+		return "0" + "Kb"
 	}
 	res := float32(wgt) / 102.4
 	frmt := 1
@@ -123,8 +123,8 @@ func CollectDocuments(fromPath string) (docs []Document, err error) {
 			}
 			tempDoc := Document{}
 			tempDoc.Name = info.Name()
-			tempDoc.Date = info.ModTime().Format("dd-mm-yyyy")
-			tempDoc.Size = string(info.Size())
+			tempDoc.Date = info.ModTime().Format("02/01/2006 15:04")
+			tempDoc.Size = parseWheight(info.Size())
 			tempDoc.Type = getExtentionType(info.Name())
 			tempDoc.Path = path
 			tempDoc.Icon = SetIcon(info.Name())
