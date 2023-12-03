@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 	"text/template"
 )
 
@@ -76,7 +77,7 @@ func SearchDocs(w http.ResponseWriter, r *http.Request) {
 	// Filters docs based on "searchpattern"
 	var filtered []utilities.Document
 	for d := range docs {
-		if utilities.InString(searchPattern, docs[d].Name) {
+		if utilities.InString(strings.ToLower(searchPattern), strings.ToLower(docs[d].Name)) {
 			filtered = append(filtered, docs[d])
 		}
 	}

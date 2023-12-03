@@ -15,6 +15,7 @@ type Document struct {
 	Date string
 	Path string
 	Icon string
+	Id   string
 }
 
 // Class used to pass data to html
@@ -128,7 +129,7 @@ func CollectDocuments(fromPath string) (docs []Document, err error) {
 			tempDoc.Type = getExtentionType(info.Name())
 			tempDoc.Path = path
 			tempDoc.Icon = SetIcon(info.Name())
-
+			tempDoc.Id = Hasher(info.Name())
 			docs = append(docs, tempDoc)
 		}
 		return nil
