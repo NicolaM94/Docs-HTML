@@ -13,6 +13,7 @@ type Settings struct {
 	PortSMTP    string
 	ContentPath string
 	LogFilePath string
+	DBFilePath  string
 }
 
 // Retrieves settings from .json file and stores them into a class

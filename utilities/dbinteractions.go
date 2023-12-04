@@ -6,11 +6,9 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-//TODO: Change hard coded db name with path from settings
-
 // Base insertion of a row into the upchardb.db
 func InsertRow(name, surname, fiscalcode, email, password string) error {
-	db, err := sql.Open("sqlite3", "upchardb.db")
+	db, err := sql.Open("sqlite3", GetSettings().DBFilePath)
 	if err != nil {
 		return err
 	}
@@ -27,7 +25,7 @@ func InsertRow(name, surname, fiscalcode, email, password string) error {
 
 // Base delition of a row from the upchardb.db
 func DeleteRow(username, password string) error {
-	db, err := sql.Open("sqlite3", "upchardb.db")
+	db, err := sql.Open("sqlite3", GetSettings().DBFilePath)
 	if err != nil {
 		return err
 	}
@@ -53,7 +51,7 @@ type Row struct {
 }
 
 func QueryRow(statement string) ([]Row, error) {
-	db, err := sql.Open("sqlite3", "upchardb.db")
+	db, err := sql.Open("sqlite3", GetSettings().DBFilePath)
 	if err != nil {
 		return nil, err
 	}

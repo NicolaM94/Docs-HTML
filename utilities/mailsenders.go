@@ -11,14 +11,16 @@ func SendCodeMail(receiver, code string) error {
 
 	//TODO: Retrieve settings from file, not hardcoded here
 	//TODO: Change mail template html to inner style not from css
+	//TODO: Logout after a certain time
+	//TODO: AuthSession cookie
 
-	from := "nicola.moro2312@gmail.com"
-	password := "iwcqewcgbwzuwpad"
+	from := GetSettings().Mail
+	password := GetSettings().Password
 
 	to := []string{receiver}
 
-	smtpHost := "smtp.gmail.com"
-	smtpPort := "587"
+	smtpHost := GetSettings().ServerSMTP
+	smtpPort := GetSettings().PortSMTP
 
 	auth := smtp.PlainAuth("", from, password, smtpHost)
 	t, _ := template.ParseFiles("./static/codemail.html")

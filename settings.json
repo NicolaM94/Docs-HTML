@@ -4,5 +4,6 @@
     "ServerSMTP" : "smtp.gmail.com",
     "PortSMTP" : "587",
     "ContentPath" : "/home/nicola/Desktop/content",
-    "LogFilePath" : ""
+    "LogFilePath" : "",
+    "DBFilePath" : "upchardb.db"
 }
