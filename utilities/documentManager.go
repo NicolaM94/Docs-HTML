@@ -3,6 +3,7 @@ package utilities
 import (
 	"fmt"
 	"io/fs"
+	"os"
 	"path/filepath"
 	"strings"
 )
@@ -138,4 +139,16 @@ func CollectDocuments(fromPath string) (docs []Document, err error) {
 		return nil, err
 	}
 	return
+}
+
+// Verify existance of the folder
+func VerifyFolderExistance(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return false, err
 }

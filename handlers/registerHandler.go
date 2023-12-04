@@ -7,6 +7,7 @@ import (
 	"text/template"
 )
 
+// TODO: Add folder creation with the fiscal code
 // Comes from registration.html, handles password match verification, sets cookies for temporary storage and parse confirmcode.html
 func RegistrationRequest(w http.ResponseWriter, r *http.Request) {
 
