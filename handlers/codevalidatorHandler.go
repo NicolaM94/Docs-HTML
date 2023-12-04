@@ -22,57 +22,32 @@ func CodeValidatorHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Checks request type, either register or login
-	reqType, err := utilities.DecodeSecureCookie("type", r)
+	fmt.Println("Registration request")
+	cookieName, err := utilities.DecodeSecureCookie("name", r)
 	if err != nil {
-		fmt.Println("Cannot decode reqType cookie")
+		panic(err)
+	}
+	cookieSurname, err := utilities.DecodeSecureCookie("surname", r)
+	if err != nil {
+		panic(err)
+	}
+	cookieFiscalCode, err := utilities.DecodeSecureCookie("fiscalcode", r)
+	if err != nil {
+		panic(err)
+	}
+	cookieMail, err := utilities.DecodeSecureCookie("email", r)
+	if err != nil {
+		panic(err)
+	}
+	cookiePassword, err := utilities.DecodeSecureCookie("password", r)
+	if err != nil {
+		panic(err)
 	}
 
-	if reqType["type"] == "registration" {
-		goto REGISTRATION
-	} else {
-		goto LOGIN
+	err = utilities.InsertRow(cookieName["name"], cookieSurname["surname"], cookieFiscalCode["fiscalcode"], cookieMail["email"], cookiePassword["password"])
+	if err != nil {
+		panic(err)
 	}
-
-REGISTRATION:
-	{
-		fmt.Println("Registration request")
-		cookieName, err := utilities.DecodeSecureCookie("name", r)
-		if err != nil {
-			panic(err)
-		}
-		cookieSurname, err := utilities.DecodeSecureCookie("surname", r)
-		if err != nil {
-			panic(err)
-		}
-		cookieFiscalCode, err := utilities.DecodeSecureCookie("fiscalcode", r)
-		if err != nil {
-			panic(err)
-		}
-		cookieMail, err := utilities.DecodeSecureCookie("email", r)
-		if err != nil {
-			panic(err)
-		}
-		cookiePassword, err := utilities.DecodeSecureCookie("password", r)
-		if err != nil {
-			panic(err)
-		}
-
-		err = utilities.InsertRow(cookieName["name"], cookieSurname["surname"], cookieFiscalCode["fiscalcode"], cookieMail["email"], cookiePassword["password"])
-		if err != nil {
-			panic(err)
-		}
-		t, _ := template.ParseFiles("./static/registration-confirm.html")
-		t.Execute(w, nil)
-	}
-
-LOGIN:
-	{
-		fmt.Println("Login asked")
-		fmt.Println("Login ended")
-
-	}
-
-	// if so, register the new user and parses registration confirm.
-
+	t, _ := template.ParseFiles("./static/registration-confirm.html")
+	t.Execute(w, nil)
 }

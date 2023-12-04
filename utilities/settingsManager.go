@@ -2,7 +2,6 @@ package utilities
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 )
 
@@ -27,6 +26,5 @@ func GetSettings() Settings {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("From settings getter: ", s)
 	return s
 }

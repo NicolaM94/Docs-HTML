@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"docs/utilities"
-	"fmt"
 	"net/http"
 	"os"
 	"text/template"
@@ -17,7 +16,6 @@ func DownloadHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve the requested ID from the URI
 	requestedFile := r.RequestURI[10:]
-	fmt.Println("Requested file: ", requestedFile)
 
 	// Decodes the mail cookie to look for the user folder
 	email, err := utilities.DecodeSecureCookie("email", r)
@@ -45,19 +43,28 @@ func DownloadHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Compares the requested ID and id of each document to find a possible path to it.
-	downloadPath := ""
+	var chosenFile utilities.Document
 	for d := range docs {
 		if docs[d].Id == requestedFile {
-			downloadPath = docs[d].Path
+			chosenFile = docs[d]
 			break
 		}
 	}
-	// If download path is still empty after the search, return 404
-	if downloadPath == "" {
-		t, _ := template.ParseFiles("./static/404.html")
-		t.Execute(w, nil)
+	// Read the file from the Document.Path and adds it to the response header
+	if chosenFile.Name != "" {
+		file, err := os.ReadFile(chosenFile.Path)
+		if err != nil {
+			panic(err)
+		}
+		preparedFileName := "attachment;filename=" + chosenFile.Name
+		w.Header().Set("Content-Disposition", preparedFileName)
+		w.Header().Set("Content-Type", r.Header.Get("Content-Type"))
+		w.Write(file)
+		http.Redirect(w, r, "/datadelivery", http.StatusFound)
+		return
 	}
-
-	// TODO: finish downloader
+	// If download path is still empty after the search, return 404
+	t, _ := template.ParseFiles("./static/404.html")
+	t.Execute(w, nil)
 
 }
