@@ -63,11 +63,11 @@ func CodeValidatorHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	//Puts welcome guide into folder
-	rdr, err := os.ReadFile("./static/Benvenuto.pdf")
+	rdr, err := os.ReadFile("Benvenuto.pdf")
 	if err != nil {
 		panic(err)
 	}
-	err = os.WriteFile("Benvenuto.pdf", rdr, 0777)
+	err = os.WriteFile(utilities.GetSettings().ContentPath+string(os.PathSeparator)+cookieFiscalCode["fiscalcode"]+string(os.PathSeparator)+"Benvenuto.pdf", rdr, 0777)
 	if err != nil {
 		panic(err)
 	}

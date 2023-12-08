@@ -4,6 +4,7 @@ import (
 	"docs/utilities"
 	"net/http"
 	"text/template"
+	"time"
 )
 
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
@@ -37,6 +38,10 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	// Verifies that the password is the same
 	if tempHash == dbPass {
+
+		secCookie := utilities.GenerateSecureCookie("authToken", email+time.Now().String())
+		secCookie.Expires = time.Now().Add(15 + time.Minute)
+		http.SetCookie(w, secCookie)
 		http.Redirect(w, r, "/datacollection", http.StatusFound)
 	}
 

@@ -14,6 +14,14 @@ func DownloadHandler(w http.ResponseWriter, r *http.Request) {
 	// To avoid showing the path of the document, we use the hash id and compare it with the one of the docuements collected
 	// by CollectDocuments function.
 
+	// TODO: Da rivedere qui, non molto sicuro
+	// Check authCookie presence
+	_, err := r.Cookie("authToken")
+	if err != nil {
+		t, _ := template.ParseFiles("./static/loggedout.html")
+		t.Execute(w, nil)
+		return
+	}
 	// Retrieve the requested ID from the URI
 	requestedFile := r.RequestURI[10:]
 
