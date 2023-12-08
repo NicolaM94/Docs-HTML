@@ -5,5 +5,6 @@
     "PortSMTP" : "587",
     "ContentPath" : "/home/nicola/Desktop/content",
     "LogFilePath" : "",
-    "DBFilePath" : "upchardb.db"
+    "DBFilePath" : "upchardb.db",
+    "ResetSeed" : "7d8nlabjdfs03nbbds8askj1hjkvfa8vfsalvjh4l3vaf8a62hvldafas68d1kvadòagvasvh3v3fd7a8"
 }

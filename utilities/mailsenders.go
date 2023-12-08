@@ -39,3 +39,20 @@ func SendCodeMail(receiver, code string) error {
 	}
 	return nil
 }
+
+// TODO: Finire qua
+func SendResetLink(receiver, code string) error {
+
+	settings := GetSettings()
+
+	from := settings.Mail
+	password := settings.Password
+	to := []string{receiver}
+	smtpHost := settings.ServerSMTP
+	smtpPort := settings.PortSMTP
+	auth := smtp.PlainAuth("", from, password, smtpHost)
+	t, _ := template.ParseFiles("./static/passrecoverymail.html")
+
+	var body bytes.Buffer
+
+}

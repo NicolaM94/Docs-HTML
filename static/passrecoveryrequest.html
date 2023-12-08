@@ -179,13 +179,14 @@
             </div>
           </div>
         </header>
-        <form class="passrecoveryrequest-form">
+        <form class="passrecoveryrequest-form" method="post">
           <h1 class="passrecoveryrequest-text11">
-            Inserisci la&nbsp; tua mail nel campo sottostante
+            Inserisci la tua mail nel campo sottostante
           </h1>
           <input
             type="text"
             autofocus=""
+            name="mailfield"
             placeholder="esempio@mail.com"
             class="passrecoveryrequest-textinput input"
           />
@@ -200,12 +201,7 @@
             </span>
             <br />
           </span>
-          <button type="button" class="passrecoveryrequest-button button">
-            <span>
-              <span>Invia</span>
-              <br />
-            </span>
-          </button>
+          <button formaction="/passwdchangerq" type="button" class="passrecoveryrequest-button button">Invia</button>
         </form>
       </div>
     </div>

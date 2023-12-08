@@ -14,6 +14,7 @@ type Settings struct {
 	ContentPath string
 	LogFilePath string
 	DBFilePath  string
+	ResetSeed   string
 }
 
 // Retrieves settings from .json file and stores them into a class
