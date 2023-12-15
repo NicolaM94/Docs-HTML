@@ -6,7 +6,7 @@ import (
 	"text/template"
 )
 
-func PasswdChangeRequest(w http.ResponseWriter, r *http.Request) {
+func PwdChangeRequestHandler(w http.ResponseWriter, r *http.Request) {
 	// Retrieve mail from field
 	mail := r.FormValue("mailfield")
 
@@ -23,5 +23,20 @@ func PasswdChangeRequest(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, nil)
 		return
 	}
+
+	ck := utilities.GenerateSecureCookie("mail", mail)
+	http.SetCookie(w, ck)
+
+	code := utilities.GenerateCode()
+	ck = utilities.GenerateSecureCookie("code", code)
+	http.SetCookie(w, ck)
+
+	err = utilities.SendCodeMail(mail, code)
+	if err != nil {
+		panic(err)
+	}
+
+	t, _ := template.ParseFiles("./static/confirmcodepassreset.html")
+	t.Execute(w, nil)
 
 }

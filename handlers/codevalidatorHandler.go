@@ -8,7 +8,7 @@ import (
 	"text/template"
 )
 
-func CodeValidatorHandler(w http.ResponseWriter, r *http.Request) {
+func LoginValidationHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve insertedCode from form and decodes code cookie
 	var insertedCode string = r.FormValue("inserted-code")

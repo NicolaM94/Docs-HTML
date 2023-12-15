@@ -161,18 +161,19 @@
             </div>
           </div>
         </header>
-        <form class="newpwsubmit-form">
+        <form class="newpwsubmit-form" method="post">
           <h1 class="newpwsubmit-text11">Crea una nuova password</h1>
           <span class="newpwsubmit-text12">
             <span>
               Una password efficace richiede almeno 12 caratteri che comprendano
-              maiuscule, minuscole, numeri e simboli. Generalmente, più la
-              password è lunga migliore è la sua sicurezza.
+              maiuscule, minuscole, numeri e simboli. Ricorda: più la
+              password è lunga migliore è la sua sicurezza!
             </span>
             <br />
           </span>
           <input
             type="password"
+            name = "password-one"
             required=""
             autofocus=""
             minlength="12"
@@ -181,18 +182,15 @@
           />
           <input
             type="password"
+            name = "password-two"
             required=""
             minlength="12"
             placeholder="Ripeti password"
             class="newpwsubmit-textinput1 input"
           />
-          <button type="button" class="newpwsubmit-button button">Invia</button>
+          <button type="submit" formaction="/pwupdate" class="newpwsubmit-button button">Invia</button>
         </form>
       </div>
     </div>
-    <script
-      defer=""
-      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
-    ></script>
   </body>
 </html>

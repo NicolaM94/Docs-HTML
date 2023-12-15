@@ -180,11 +180,11 @@
 }
 .newpwsubmit-form {
   width: 1380px;
-  height: 690px;
+  height: auto;
   display: flex;
   margin-top: var(--dl-space-space-sixunits);
-  margin-left: var(--dl-space-space-unit);
-  margin-right: var(--dl-space-space-unit);
+  margin-left: var(--dl-space-space-threeunits);
+  margin-right: var(--dl-space-space-threeunits);
   border-radius: 15px;
   margin-bottom: var(--dl-space-space-unit);
   flex-direction: column;
@@ -227,7 +227,8 @@
   height: 73px;
   font-size: 24px;
   align-self: center;
-  margin-top: var(--dl-space-space-fourunits);
+  margin-top: var(--dl-space-space-threeunits);
+  margin-bottom: var(--dl-space-space-threeunits);
   border-width: 0px;
   background-color: rgba(0, 92, 255, 0.47);
 }
