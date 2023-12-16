@@ -39,3 +39,30 @@ func SendCodeMail(receiver, code string) error {
 	}
 	return nil
 }
+
+// function used to send a confirmation mail of the password change
+func SendPassChangeMail(receiver string) error {
+	from := GetSettings().Mail
+	password := GetSettings().Password
+
+	to := []string{receiver}
+
+	smtpHost := GetSettings().ServerSMTP
+	smtpPort := GetSettings().PortSMTP
+
+	auth := smtp.PlainAuth("", from, password, smtpHost)
+	t, _ := template.ParseFiles("./static/mails/pwchangemail.html")
+
+	var body bytes.Buffer
+
+	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
+	body.Write([]byte(fmt.Sprintf("Subject: Docs - Password aggiornata \n%s\n\n", mimeHeaders)))
+
+	t.Execute(&body, nil)
+
+	err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, body.Bytes())
+	if err != nil {
+		panic(err)
+	}
+	return nil
+}

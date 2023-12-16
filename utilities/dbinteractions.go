@@ -82,3 +82,24 @@ func SearchInRows(target string, rows []Row) bool {
 	}
 	return false
 }
+
+// Updates the database target row with the update given to the function
+func UpdateRow(target string, update string) (int, error) {
+	db, err := sql.Open("sqlite3", GetSettings().DBFilePath)
+	if err != nil {
+		panic(err)
+	}
+
+	stmt, err := db.Prepare("update users set password=? where email=?")
+	if err != nil {
+		panic(err)
+	}
+
+	res, err := stmt.Exec(update, target)
+	if err != nil {
+		panic(err)
+	}
+
+	afct, err := res.RowsAffected()
+	return int(afct), err
+}

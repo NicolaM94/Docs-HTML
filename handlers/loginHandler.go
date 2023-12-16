@@ -13,6 +13,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	email := r.FormValue("emailfield")
 	password := r.FormValue("passwordfield")
 	tempHash := utilities.HashNSault(email + password)
+	print(tempHash)
 
 	//TODO: Qua serve https, non possibile rimuovere questo con i cookie
 

@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"docs/utilities"
+	"fmt"
 	"net/http"
+	"os"
 	"text/template"
 )
 
@@ -10,7 +12,7 @@ func NewPwSubmitHandler(w http.ResponseWriter, r *http.Request) {
 
 	//TODO: Serve un modo per autenticare la richiesta, altrimenti uno arriva da plain html e cambia Forse un cookie di auth per il cambio password?
 	// Retrieves mail for latter search of the user
-	_, err := utilities.DecodeSecureCookie("mail", r)
+	mail, err := utilities.DecodeSecureCookie("mail", r)
 	if err != nil {
 		panic(err)
 	}
@@ -24,6 +26,19 @@ func NewPwSubmitHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//TODO: Scrivi il cambio passowrd qui
+	afct, err := utilities.UpdateRow(mail["mail"], utilities.HashNSault(mail["mail"]+passwordOne))
+	if err != nil {
+		panic(err)
+	}
+	if afct != 1 {
+		fmt.Println(r.Host)
+		fmt.Println("Email caught: ", mail["mail"])
+		fmt.Println("Users affected: ", afct, "err: ", err)
+		fmt.Println("Extremely severe exception caught - Multiple rows affected by password change request. Shutting down for security reason. Investigation neeeded: please contact the support.")
+		os.Exit(2)
+	}
 
+	utilities.SendPassChangeMail(mail["mail"])
+	t, _ := template.ParseFiles("./static/registration-confirm.html")
+	t.Execute(w, nil)
 }
