@@ -6,11 +6,28 @@ import (
 	"net/http"
 	"os"
 	"text/template"
+	"time"
 )
 
 func NewPwSubmitHandler(w http.ResponseWriter, r *http.Request) {
 
 	//TODO: Serve un modo per autenticare la richiesta, altrimenti uno arriva da plain html e cambia Forse un cookie di auth per il cambio password?
+	// Checks auth cookie for the password change
+	authck, err := utilities.DecodeSecureCookie("pwAthTkn", r)
+	if err != nil {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+	codecookie, err := utilities.DecodeSecureCookie("code", r)
+	if err != nil {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+	if authck["pwAthTkn"] != utilities.HashNSault(codecookie["code"]+time.DateOnly) {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	// Retrieves mail for latter search of the user
 	mail, err := utilities.DecodeSecureCookie("mail", r)
 	if err != nil {
