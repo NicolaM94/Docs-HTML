@@ -58,4 +58,5 @@ func NewPwSubmitHandler(w http.ResponseWriter, r *http.Request) {
 	utilities.SendPassChangeMail(mail["mail"])
 	t, _ := template.ParseFiles("./static/registration-confirm.html")
 	t.Execute(w, nil)
+
 }
