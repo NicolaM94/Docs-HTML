@@ -25,7 +25,6 @@ func PassCodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: il cookie qua sotto è utilizzato per validare la sessione di cambio password. Valida in newpwsumbit.go
 	ck := utilities.GenerateSecureCookie("pwAthTkn", utilities.HashNSault(cookieCode["code"]+time.DateOnly))
 	ck.Expires = time.Now().Add(15 * time.Minute)
 	http.SetCookie(w, ck)

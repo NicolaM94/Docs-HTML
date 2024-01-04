@@ -15,8 +15,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	tempHash := utilities.HashNSault(email + password)
 	print(tempHash)
 
-	//TODO: Qua serve https, non possibile rimuovere questo con i cookie
-
 	ck := utilities.GenerateSecureCookie("email", email)
 	http.SetCookie(w, ck)
 

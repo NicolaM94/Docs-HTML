@@ -11,7 +11,6 @@ import (
 
 func NewPwSubmitHandler(w http.ResponseWriter, r *http.Request) {
 
-	//TODO: Serve un modo per autenticare la richiesta, altrimenti uno arriva da plain html e cambia Forse un cookie di auth per il cambio password?
 	// Checks auth cookie for the password change
 	authck, err := utilities.DecodeSecureCookie("pwAthTkn", r)
 	if err != nil {
