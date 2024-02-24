@@ -283,13 +283,14 @@
 }
 .page1-text12 {
   color: rgba(6, 36, 75, 1);
-  font-size: 24px;
+  font-size: 20px;
   align-self: center;
   font-style: normal;
   margin-top: var(--dl-space-space-threeunits);
   text-align: center;
   font-family: "Poppins";
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 2;
   margin-left: var(--dl-space-space-unit);
   padding-top: 10px;
   margin-right: var(--dl-space-space-unit);

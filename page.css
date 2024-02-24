@@ -284,13 +284,13 @@
   object-fit: cover;
 }
 .page-text12 {
-  color: rgb(12, 12, 12);
+  color: rgba(6, 36, 75, 1);
   font-size: 20px;
   font-style: normal;
   margin-top: 0px;
   text-align: center;
   font-family: "Inter";
-  font-weight: 600;
+  font-weight: 500;
   line-height: 2;
   margin-left: 0px;
   margin-right: 0px;

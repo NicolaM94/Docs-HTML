@@ -323,7 +323,7 @@
   width: auto;
   height: auto;
   display: flex;
-  margin-top: 300px;
+  margin-top: 240px;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
@@ -368,7 +368,7 @@
   margin-top: var(--dl-space-space-twounits);
   text-align: center;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 2;
   letter-spacing: 1px;
 }
 .index-hero1 {
