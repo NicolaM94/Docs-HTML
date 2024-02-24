@@ -1,0 +1,587 @@
+.passrecoveryrequest-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.passrecoveryrequest-navbar-interactive {
+  top: 0;
+  width: 100%;
+  height: 88px;
+  display: flex;
+  opacity: 1;
+  z-index: 900;
+  position: fixed;
+  align-items: center;
+  padding-top: 0px;
+  padding-left: var(--dl-space-space-threeunits);
+  border-radius: var(--dl-radius-radius-radius2);
+  padding-right: var(--dl-space-space-threeunits);
+  padding-bottom: 0px;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+.passrecoveryrequest-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: space-between;
+  flex-direction: column;
+}
+.passrecoveryrequest-desktop-menu {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.passrecoveryrequest-hero {
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  max-width: var(--dl-size-size-xxlarge);
+  min-height: auto;
+  border-color: #06244B;
+  border-width: 2px;
+  flex-direction: row;
+  background-color: #ffffff;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 3px;
+}
+.passrecoveryrequest-image {
+  width: 80%;
+  height: 80px;
+  align-self: center;
+  object-fit: cover;
+}
+.passrecoveryrequest-image1 {
+  width: 59px;
+  height: 59px;
+  object-fit: cover;
+}
+.passrecoveryrequest-links {
+  flex: 1;
+  width: auto;
+  display: flex;
+  align-items: center;
+  border-color: #06244B;
+  border-width: 1px;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 3px;
+}
+.passrecoveryrequest-container2 {
+  width: auto;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.passrecoveryrequest-navlink {
+  color: rgb(6, 36, 75);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+}
+.passrecoveryrequest-navlink1 {
+  color: rgb(6, 36, 75);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
+  text-decoration: none;
+}
+.passrecoveryrequest-navlink2 {
+  color: rgb(6, 36, 75);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
+  text-decoration: none;
+}
+.passrecoveryrequest-navlink3 {
+  color: rgb(6, 36, 75);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
+  text-decoration: none;
+}
+.passrecoveryrequest-buttons {
+  display: flex;
+  align-items: center;
+  border-color: #06244B;
+  border-width: 2px;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 3px;
+}
+.passrecoveryrequest-login {
+  color: rgba(6, 36, 75, 1);
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  border-color: rgba(6, 36, 75, 1);
+  border-width: 3px;
+  margin-right: var(--dl-space-space-twounits);
+  text-decoration: none;
+  background-color: #ffffff;
+}
+.passrecoveryrequest-register {
+  color: #52F4AB;
+  width: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  border-color: rgba(6, 36, 75, 1);
+  border-width: 3px;
+  text-decoration: none;
+  background-color: rgba(6, 36, 75, 1);
+}
+.passrecoveryrequest-burger-menu {
+  display: none;
+}
+.passrecoveryrequest-icon {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.passrecoveryrequest-mobile-menu {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  padding: 32px;
+  z-index: 100;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.passrecoveryrequest-nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.passrecoveryrequest-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-threeunits);
+  justify-content: space-between;
+}
+.passrecoveryrequest-logo {
+  height: 2rem;
+}
+.passrecoveryrequest-close-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.passrecoveryrequest-icon02 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.passrecoveryrequest-links1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.passrecoveryrequest-text06 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.passrecoveryrequest-text07 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.passrecoveryrequest-text08 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.passrecoveryrequest-text09 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.passrecoveryrequest-buttons1 {
+  display: flex;
+  margin-top: var(--dl-space-space-unit);
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.passrecoveryrequest-login1 {
+  margin-right: var(--dl-space-space-twounits);
+}
+.passrecoveryrequest-icon04 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.passrecoveryrequest-icon06 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.passrecoveryrequest-icon08 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.passrecoveryrequest-container3 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.passrecoveryrequest-container4 {
+  gap: var(--dl-space-space-threeunits);
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.passrecoveryrequest-image2 {
+  width: 15%;
+  height: auto;
+  object-fit: cover;
+}
+.passrecoveryrequest-text10 {
+  width: auto;
+  height: auto;
+  font-size: 2em;
+  align-self: center;
+  text-align: center;
+  font-family: "Poppins";
+}
+.passrecoveryrequest-form {
+  gap: var(--dl-space-space-twounits);
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-radius: 15px;
+  margin-bottom: 0px;
+  flex-direction: column;
+  justify-content: center;
+}
+.passrecoveryrequest-textinput {
+  width: auto;
+  height: var(--dl-size-size-small);
+  outline: none;
+  font-size: 20px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  border-width: 0px;
+  border-radius: 0px;
+  background-color: rgba(255, 255, 255, 0.79);
+  border-bottom-width: 1px;
+}
+.passrecoveryrequest-text11 {
+  width: 80%;
+  font-size: 18px;
+  font-style: normal;
+  margin-top: 0px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 2;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.passrecoveryrequest-button {
+  color: #ffffff;
+  width: 176px;
+  height: 75px;
+  font-size: 24px;
+  align-self: center;
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-family: "Poppins";
+  border-width: 0px;
+  margin-bottom: var(--dl-space-space-twounits);
+  background-color: rgba(6, 36, 75, 1);
+}
+.passrecoveryrequest-text16 {
+  color: #52f4ab;
+}
+.passrecoveryrequest-footer {
+  gap: var(--dl-space-space-unit);
+  flex: 0;
+  width: 1344px;
+  bottom: 0;
+  height: 22px;
+  display: flex;
+  position: fixed;
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-unit);
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.passrecoveryrequest-text19 {
+  color: rgb(6, 36, 75);
+  font-size: 1.5em;
+  align-self: center;
+  margin-top: 0px;
+  font-family: "Poppins";
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.passrecoveryrequest-text20 {
+  color: var(--dl-color-gray-black);
+  font-size: 10px;
+  text-align: center;
+  padding-left: var(--dl-space-space-twounits);
+  padding-right: var(--dl-space-space-twounits);
+}
+.passrecoveryrequest-icon-group1 {
+  margin: 0px;
+  display: flex;
+  position: relative;
+  margin-top: var(--dl-space-space-halfunit);
+  align-items: flex-end;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: var(--dl-space-space-halfunit);
+  margin-right: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  margin-bottom: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: row;
+  padding-bottom: var(--dl-space-space-halfunit);
+  justify-content: space-between;
+}
+.passrecoveryrequest-icon10 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.passrecoveryrequest-icon12 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.passrecoveryrequest-icon14 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+@media(max-width: 991px) {
+  .passrecoveryrequest-hero {
+    flex-direction: column;
+  }
+  .passrecoveryrequest-text10 {
+    height: 124px;
+  }
+  .passrecoveryrequest-form {
+    width: 955px;
+    height: 625px;
+  }
+  .passrecoveryrequest-button {
+    color: #ffffff;
+    border-width: 0px;
+    background-color: rgba(0, 80, 255, 0.65);
+  }
+  .passrecoveryrequest-text19 {
+    margin-left: 300px;
+  }
+}
+@media(max-width: 767px) {
+  .passrecoveryrequest-navbar-interactive {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .passrecoveryrequest-desktop-menu {
+    display: none;
+  }
+  .passrecoveryrequest-hero {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .passrecoveryrequest-burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .passrecoveryrequest-text06 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-text07 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-text08 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-text09 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-login1 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    border-width: 2px;
+  }
+  .passrecoveryrequest-register1 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    border-width: 2px;
+  }
+  .passrecoveryrequest-text10 {
+    height: 135px;
+  }
+  .passrecoveryrequest-form {
+    width: 716px;
+    height: 636px;
+  }
+  .passrecoveryrequest-textinput {
+    width: 665px;
+    height: 82px;
+    font-size: 24px;
+    margin-top: var(--dl-space-space-oneandhalfunits);
+  }
+  .passrecoveryrequest-text11 {
+    margin-top: var(--dl-space-space-oneandhalfunits);
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-button {
+    color: #ffffff;
+    border-width: 0px;
+    background-color: rgba(1, 72, 255, 0.59);
+  }
+  .passrecoveryrequest-footer {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .passrecoveryrequest-text19 {
+    margin-left: 0px;
+  }
+  .passrecoveryrequest-text20 {
+    text-align: center;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+}
+@media(max-width: 479px) {
+  .passrecoveryrequest-navbar-interactive {
+    padding: var(--dl-space-space-unit);
+    background-color: rgba(127, 178, 255, 0.35);
+  }
+  .passrecoveryrequest-hero {
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: var(--dl-space-space-twounits);
+  }
+  .passrecoveryrequest-mobile-menu {
+    padding: 16px;
+    background-color: #efefef;
+  }
+  .passrecoveryrequest-text06 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .passrecoveryrequest-text07 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .passrecoveryrequest-text08 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .passrecoveryrequest-text09 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .passrecoveryrequest-login1 {
+    border-width: 2px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  .passrecoveryrequest-register1 {
+    border-width: 2px;
+  }
+  .passrecoveryrequest-text10 {
+    height: 90px;
+    font-size: 2em;
+  }
+  .passrecoveryrequest-form {
+    width: 431px;
+    height: 614px;
+  }
+  .passrecoveryrequest-textinput {
+    width: 402px;
+    height: var(--dl-size-size-small);
+    font-size: 22px;
+    margin-top: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-text11 {
+    margin-top: var(--dl-space-space-twounits);
+  }
+  .passrecoveryrequest-button {
+    color: #ffffff;
+    width: 136px;
+    height: 57px;
+    border-width: 0px;
+    background-color: rgba(0, 69, 255, 0.5);
+  }
+  .passrecoveryrequest-footer {
+    padding: var(--dl-space-space-unit);
+    flex-direction: column;
+  }
+  .passrecoveryrequest-text19 {
+    color: #0c0c0c;
+    font-size: 6em;
+    margin-top: var(--dl-space-space-sixunits);
+    font-family: Poppins;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+  .passrecoveryrequest-text20 {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
