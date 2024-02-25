@@ -59,40 +59,14 @@
   align-self: center;
   object-fit: cover;
 }
-.login-container2 {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-.login-navlink {
-  display: contents;
-}
-.login-text {
-  color: rgb(6, 36, 75);
-  width: auto;
-  font-size: 2.5em;
-  align-self: flex-start;
-  text-decoration: none;
-}
-.login-text01 {
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  align-self: flex-start;
-  font-style: normal;
-  font-weight: 600;
-  border-radius: var(--dl-radius-radius-radius8);
-  animation-name: none;
-  animation-delay: 0s;
-  background-image: linear-gradient(90deg, rgb(15, 18, 100) 2%, rgb(109, 242, 230) 100%);
-  animation-duration: 300ms;
-  animation-direction: alternate-reverse;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
+.login-image1 {
+  width: 59px;
+  height: 59px;
+  object-fit: cover;
 }
 .login-links {
   flex: 1;
-  width: 1128px;
+  width: auto;
   display: flex;
   align-items: center;
   border-color: #06244B;
@@ -105,7 +79,7 @@
   border-right-width: 0px;
   border-bottom-width: 3px;
 }
-.login-container3 {
+.login-container2 {
   width: auto;
   height: 100px;
   display: flex;
@@ -113,11 +87,19 @@
   justify-content: center;
   background-color: #ffffff;
 }
+.login-navlink {
+  color: rgb(6, 36, 75);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+}
 .login-navlink1 {
   color: rgb(6, 36, 75);
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
+  margin-left: var(--dl-space-space-twounits);
   text-decoration: none;
 }
 .login-navlink2 {
@@ -129,14 +111,6 @@
   text-decoration: none;
 }
 .login-navlink3 {
-  color: rgb(6, 36, 75);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  margin-left: var(--dl-space-space-twounits);
-  text-decoration: none;
-}
-.login-navlink4 {
   color: rgb(6, 36, 75);
   font-size: 18px;
   font-style: normal;
@@ -232,16 +206,16 @@
   align-items: flex-start;
   flex-direction: column;
 }
+.login-text06 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.login-text07 {
+  margin-bottom: var(--dl-space-space-unit);
+}
 .login-text08 {
   margin-bottom: var(--dl-space-space-unit);
 }
 .login-text09 {
-  margin-bottom: var(--dl-space-space-unit);
-}
-.login-text10 {
-  margin-bottom: var(--dl-space-space-unit);
-}
-.login-text11 {
   margin-bottom: var(--dl-space-space-unit);
 }
 .login-buttons1 {
@@ -268,7 +242,7 @@
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
-.login-container4 {
+.login-container3 {
   gap: var(--dl-space-space-sixunits);
   width: auto;
   height: auto;
@@ -279,6 +253,18 @@
   margin-bottom: 260px;
   flex-direction: row;
   justify-content: flex-start;
+}
+.login-container4 {
+  flex: 0 0 auto;
+  height: 350px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-image2 {
+  width: 200px;
+  object-fit: cover;
 }
 .login-container5 {
   gap: var(--dl-space-space-twounits);
@@ -299,13 +285,13 @@
   align-items: center;
   justify-content: center;
 }
-.login-image1 {
+.login-image3 {
   width: 50%;
   height: auto;
   align-self: center;
   object-fit: cover;
 }
-.login-text12 {
+.login-text10 {
   color: rgb(6, 36, 75);
   width: 100%;
   height: auto;
@@ -330,7 +316,7 @@
   font-style: normal;
   font-weight: 600;
 }
-.login-navlink5 {
+.login-navlink4 {
   font-style: normal;
   font-weight: 600;
 }
@@ -412,7 +398,7 @@
   flex-direction: row;
   justify-content: flex-end;
 }
-.login-text15 {
+.login-text13 {
   color: rgb(6, 36, 75);
   font-size: 1.5em;
   align-self: center;
@@ -421,7 +407,7 @@
   margin-left: 0px;
   margin-right: 0px;
 }
-.login-text16 {
+.login-text14 {
   color: var(--dl-color-gray-black);
   font-size: 10px;
   text-align: center;
@@ -462,7 +448,7 @@
   .login-hero {
     flex-direction: column;
   }
-  .login-text15 {
+  .login-text13 {
     margin-left: 300px;
   }
 }
@@ -483,27 +469,27 @@
     align-items: center;
     justify-content: center;
   }
+  .login-text06 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .login-text07 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
   .login-text08 {
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
+    margin-left: 0;
     margin-bottom: var(--dl-space-space-unit);
   }
   .login-text09 {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    margin-left: 0;
-    margin-bottom: var(--dl-space-space-unit);
-  }
-  .login-text10 {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    margin-left: 0;
-    margin-bottom: var(--dl-space-space-unit);
-  }
-  .login-text11 {
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -526,10 +512,10 @@
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
-  .login-text15 {
+  .login-text13 {
     margin-left: 0px;
   }
-  .login-text16 {
+  .login-text14 {
     text-align: center;
     margin-left: var(--dl-space-space-unit);
     margin-right: var(--dl-space-space-unit);
@@ -550,22 +536,22 @@
     padding: 16px;
     background-color: #efefef;
   }
+  .login-text06 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .login-text07 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
   .login-text08 {
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
   }
   .login-text09 {
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-  }
-  .login-text10 {
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-  }
-  .login-text11 {
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
@@ -581,7 +567,7 @@
     padding: var(--dl-space-space-unit);
     flex-direction: column;
   }
-  .login-text15 {
+  .login-text13 {
     color: #0c0c0c;
     font-size: 6em;
     margin-top: var(--dl-space-space-sixunits);
@@ -589,7 +575,7 @@
     margin-left: var(--dl-space-space-unit);
     margin-right: var(--dl-space-space-unit);
   }
-  .login-text16 {
+  .login-text14 {
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: var(--dl-space-space-unit);
