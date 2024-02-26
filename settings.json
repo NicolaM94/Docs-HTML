@@ -5,5 +5,5 @@
     "ServerSMTPHost": "",
     "ServerSMTPPort": "",
     "DocBasePath": "/home/nicola/Desktop/docbase",
-    "UDBLocation" : ""
+    "UDBLocation" : "./udb.db"
 }

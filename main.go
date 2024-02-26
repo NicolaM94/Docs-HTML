@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+
 	// Checks for settings file existance.
 	// If false, fatal.
 	// Then instantiate settings.
@@ -22,7 +23,14 @@ func main() {
 	log.Default().Printf("Check for docbase in %v...\n", managers.Settings{}.Populate().DocBasePath)
 	err = managers.CheckDocBase()
 	if err != nil {
-		log.Fatalln(err, "there")
+		log.Fatalln(err)
+	}
+
+	//Check for users database existance
+	log.Default().Printf("Checkign for udb in %v...\n", managers.Settings{}.Populate().UDBLocation)
+	err = managers.InitUserDatabase()
+	if err != nil {
+		log.Fatalln(err)
 	}
 
 	// Defining routes
@@ -36,7 +44,7 @@ func main() {
 	log.Default().Println("Server started. Awaiting connections...")
 	srvErr := http.ListenAndServe(":3333", mux)
 	if srvErr != nil {
-		log.Fatalln(err, "here")
+		log.Fatalln(err)
 	}
 
 }
