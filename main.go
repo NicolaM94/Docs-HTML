@@ -8,10 +8,10 @@ import (
 )
 
 func main() {
-
 	// Checks for settings file existance.
 	// If false, fatal.
 	// Then instantiate settings.
+	log.Default().Println("Check for settings...")
 	err := managers.CheckSettings()
 	if err != nil {
 		log.Fatalln(err)
@@ -19,16 +19,24 @@ func main() {
 
 	// Checks for data file system existance.
 	// If false, fatal.
+	log.Default().Printf("Check for docbase in %v...\n", managers.Settings{}.Populate().DocBasePath)
+	err = managers.CheckDocBase()
+	if err != nil {
+		log.Fatalln(err, "there")
+	}
 
+	// Defining routes
+	log.Default().Println("Defining routes...")
 	static := http.FileServer(http.Dir("./static"))
 	mux := http.NewServeMux()
 	mux.Handle("/", static)
 	mux.HandleFunc("/index", handlers.IndexHandler)
 
 	// Starting the server
+	log.Default().Println("Server started. Awaiting connections...")
 	srvErr := http.ListenAndServe(":3333", mux)
 	if srvErr != nil {
-		panic(srvErr)
+		log.Fatalln(err, "here")
 	}
 
 }

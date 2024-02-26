@@ -24,6 +24,7 @@ type Settings struct {
 	ServerSMTPHost    string
 	ServerSMTPPort    string
 	DocBasePath       string
+	UDBLocation       string
 }
 
 // Populates the settings struct instance with the current data from settings.json.
@@ -31,7 +32,7 @@ type Settings struct {
 //
 // Write back directly in s: one should call this every time a Settings struct is instantiated.
 func (s Settings) Populate() Settings {
-	reader, err := os.ReadFile(".")
+	reader, err := os.ReadFile("settings.json")
 	if err != nil {
 		log.Fatalln(err)
 	}

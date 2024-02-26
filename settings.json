@@ -1,0 +1,9 @@
+{
+    "ServerPort": "",
+    "ServerMailAddress": "",
+    "ServerMailPass": "",
+    "ServerSMTPHost": "",
+    "ServerSMTPPort": "",
+    "DocBasePath": "/home/nicola/Desktop/docbase",
+    "UDBLocation" : ""
+}
