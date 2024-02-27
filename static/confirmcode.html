@@ -139,17 +139,16 @@
               Ti abbiamo inviato un codice alla mail indicata. Inseriscilo qui
               sotto per confermare la richiesta!
             </span>
-            <form class="confirmcode-form">
+            <form class="confirmcode-form" method="post">
               <input
+                name = "inputcode"
                 type="text"
                 required=""
                 autofocus=""
                 placeholder="es: XXXYYYZZZ"
                 class="confirmcode-textinput input"
               />
-              <a href="register.html" class="confirmcode-register button">
-                Valida codice
-              </a>
+              <button class="confirmcode-register button" formaction="/codevalidation"> Valida codice</button>
             </form>
           </div>
         </div>

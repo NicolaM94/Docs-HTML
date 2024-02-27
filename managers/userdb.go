@@ -68,3 +68,26 @@ func InitUserDatabase() error {
 	log.Default().Printf("UDB generated at %v. No exceptions caught.\n", Settings{}.Populate().UDBLocation)
 	return nil
 }
+
+// Register a new user into the databases
+// TODO: Devi implementare il check degli utenti per evitare registrazioni doppie.
+func RegisterUserUDB(mail, password, name, surname string) error {
+	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
+	if err != nil {
+		return err
+	}
+	stmt, err := db.Prepare("INSERT INTO users(ID, USERMAIL, PASSWORD, NAME, SURNAME) values (?,?,?,?)")
+	if err != nil {
+		return err
+	}
+	res, err := stmt.Exec(mail, password, name, surname)
+	if err != nil {
+		return err
+	}
+	rws, err := res.RowsAffected()
+	if err != nil {
+		return err
+	}
+	log.Default().Print(">> Rows affecteb by db insertion: ", rws)
+	return nil
+}
