@@ -24,7 +24,6 @@ func Codegen() string {
 }
 
 // Function to send the code for authorization
-
 func SendCodeMail(receiver string, code string) error {
 
 	var settings Settings = Settings{}.Populate()
