@@ -15,3 +15,13 @@ func HashNSault(text string) string {
 	}
 	return base64.StdEncoding.EncodeToString(gen.Sum(nil))
 }
+
+// Function to check if the two filled passwords fields are equal
+func EqualString(textone, texttwo string) bool {
+	for t := range textone {
+		if textone[t] != texttwo[t] {
+			return false
+		}
+	}
+	return true
+}

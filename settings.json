@@ -1,9 +1,9 @@
 {
-    "ServerPort": "",
-    "ServerMailAddress": "",
-    "ServerMailPass": "",
-    "ServerSMTPHost": "",
-    "ServerSMTPPort": "",
+    "ServerPort": "3333",
+    "ServerMailAddress": "nicola.moro2312@gmail.com",
+    "ServerMailPass": "dipkpbhikufdfbpe",
+    "ServerSMTPHost": "smtp.gmail.com",
+    "ServerSMTPPort": "587",
     "DocBasePath": "/home/nicola/Desktop/docbase",
     "UDBLocation" : "./udb.db"
 }

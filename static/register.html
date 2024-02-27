@@ -200,15 +200,17 @@
             <h1 class="register-text10">Registrati</h1>
           </div>
           <div class="register-container5">
-            <form class="register-form">
+            <form class="register-form" method="post">
               <input
                 type="text"
+                name="namefield"
                 required="true"
                 autofocus="true"
                 placeholder="Nome"
                 class="register-textinput input"
               />
               <input
+                name="surnamefield"
                 type="text"
                 required="true"
                 autofocus="true"
@@ -216,6 +218,7 @@
                 class="register-textinput1 input"
               />
               <input
+                name = "emailfield"
                 type="text"
                 required="true"
                 autofocus="true"
@@ -223,6 +226,7 @@
                 class="register-textinput2 input"
               />
               <input
+                name="emailagainfield"
                 type="text"
                 required="true"
                 autofocus="true"
@@ -230,6 +234,7 @@
                 class="register-textinput3 input"
               />
               <input
+                name="passfield"
                 type="password"
                 required="true"
                 autofocus="true"
@@ -237,20 +242,21 @@
                 class="register-textinput4 input"
               />
               <input
+                name = "passagainfield"
                 type="password"
                 required="true"
                 autofocus="true"
                 placeholder="Ripeti password"
                 class="register-textinput5 input"
               />
-              <button class="register-register2 button">
+              <button class="register-register2 button" formaction="/registerrequest">
                 <span>
                   <span>Registrati</span>
                   <br />
                 </span>
               </button>
             </form>
-          </div>
+            </div>
         </div>
         <footer class="register-footer">
           <h1 class="register-text14">DocShelf</h1>

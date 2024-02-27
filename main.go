@@ -38,11 +38,12 @@ func main() {
 	static := http.FileServer(http.Dir("./static"))
 	mux := http.NewServeMux()
 	mux.Handle("/", static)
+	mux.HandleFunc("/registerrequest", handlers.RegReqHandler)
 	mux.HandleFunc("/index", handlers.IndexHandler)
 
 	// Starting the server
 	log.Default().Println("Server started. Awaiting connections...")
-	srvErr := http.ListenAndServe(":3333", mux)
+	srvErr := http.ListenAndServe(":"+managers.Settings{}.Populate().ServerPort, mux)
 	if srvErr != nil {
 		log.Fatalln(err)
 	}
