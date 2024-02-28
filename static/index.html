@@ -99,9 +99,9 @@
       <link href="./index.css" rel="stylesheet" />
 
       <div class="index-container">
-        <header data-thq="thq-navbar" class="index-navbar-interactive">
+        <header data-thq="thq-navbar" class="index-navbar-interactive" id="navbar">
           <div class="index-container01"></div>
-          <div data-thq="thq-navbar-nav" class="index-desktop-menu">
+          <div data-thq="thq-navbar-nav" class="index-desktop-menu" >
             <div class="index-hero">
               <img
                 alt="image"
@@ -113,7 +113,7 @@
                 <span class="index-text01">&nbsp;Sharing, easy&nbsp;</span>
               </div>
             </div>
-            <nav class="index-links">
+            <nav class="index-links" >
               <div class="index-container03">
                 <a href="#features" class="index-link">
                   <span>Features</span>
@@ -519,5 +519,20 @@
       defer=""
       src="https://unpkg.com/@teleporthq/react-components/dist/animate-on-reveal.umd.js"
     ></script>
+
+    <!--Navbar scrolling script-->
+    <script>
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("navbar").style.top = "0";
+        } else {
+          document.getElementById("navbar").style.top = "-150px";
+        }
+        prevScrollpos = currentScrollPos;
+      }
+      </script>
+
   </body>
 </html>

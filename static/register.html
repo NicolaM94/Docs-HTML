@@ -111,12 +111,12 @@
             </div>
             <nav class="register-links">
               <div class="register-container2">
-                <a href="index.html" class="register-navlink">
+                <a href="/#features" class="register-navlink">
                   <span>Features</span>
                   <br />
                 </a>
-                <a href="index.html" class="register-navlink1">Pricing</a>
-                <a href="index.html" class="register-navlink2">
+                <a href="/#pricing" class="register-navlink1">Pricing</a>
+                <a href="/#contatti" class="register-navlink2">
                   <span>Contatti</span>
                   <br />
                 </a>
@@ -293,5 +293,19 @@
       defer=""
       src="https://unpkg.com/@teleporthq/react-components/dist/animate-on-reveal.umd.js"
     ></script>
+    
+    <!--Navbar scrolling script-->
+    <script>
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("navbar").style.top = "0";
+        } else {
+          document.getElementById("navbar").style.top = "-50px";
+        }
+        prevScrollpos = currentScrollPos;
+      }
+      </script>
   </body>
 </html>

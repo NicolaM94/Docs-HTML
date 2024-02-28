@@ -63,11 +63,11 @@
 .index-navbar-interactive {
   top: 0;
   width: 100%;
-  display: flex;
+  display: block;
   opacity: 1;
   z-index: 900;
   position: fixed;
-  transition: 0.3s;
+  transition: top 0.3s;
   align-items: center;
   padding-top: var(--dl-space-space-oneandhalfunits);
   padding-left: var(--dl-space-space-threeunits);

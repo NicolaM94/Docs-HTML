@@ -49,7 +49,7 @@ func InitUserDatabase() error {
 			"PASSWORD"	TEXT NOT NULL,
 			"NAME"	TEXT,
 			"SURNAME"	TEXT,
-			PRIMARY KEY('ID' AUTOINCREMENT)
+			PRIMARY KEY('ID',"ID" AUTOINCREMENT)
 		);`)
 		if err != nil {
 			return errors.New("** FATAL ERRROR ** : Some errors occured while preparing the db init stmt :" + err.Error())
@@ -76,11 +76,11 @@ func RegisterUserUDB(mail, password, name, surname string) error {
 	if err != nil {
 		return err
 	}
-	stmt, err := db.Prepare("INSERT INTO users(ID, USERMAIL, PASSWORD, NAME, SURNAME) values (?,?,?,?)")
+	stmt, err := db.Prepare("INSERT INTO users(ID, USERMAIL, PASSWORD, NAME, SURNAME) values (?,?,?,?,?)")
 	if err != nil {
 		return err
 	}
-	res, err := stmt.Exec(mail, password, name, surname)
+	res, err := stmt.Exec(nil, mail, password, name, surname)
 	if err != nil {
 		return err
 	}
