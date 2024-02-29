@@ -39,6 +39,8 @@ func RegReqHandler(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &email)
 	password := secmanagers.CreateSecCk("password", secmanagers.HashNSault(passOne))
 	http.SetCookie(w, &password)
+	reqtype := http.Cookie{Name: "reqtype", Value: "register"}
+	http.SetCookie(w, &reqtype)
 
 	// Sending mail with code and setting cookie to responsewriter
 	log.Default().Printf(">> %v - Trying to send code mail...\n", r.RemoteAddr)

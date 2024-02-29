@@ -69,9 +69,62 @@ func InitUserDatabase() error {
 	return nil
 }
 
+// Base struct to catch udb rows
+type UDBrow struct {
+	Id       int
+	Mail     string
+	Password string
+	Name     string
+	Surname  string
+}
+
+// Queries to the UDB.
+// Returns an array of UDBrow instances and error
+//
+// If err != nil, UDBrow is nil
+// Else err is nil and UDBrow will containt the rows upcoming from the query.
+func NormalQueryDB(query string) ([]UDBrow, error) {
+	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
+	if err != nil {
+		return nil, err
+	}
+
+	rows, err := db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	container := []UDBrow{}
+	for rows.Next() {
+		temp := UDBrow{}
+		err = rows.Scan(&temp.Id, &temp.Mail, &temp.Password, &temp.Name, &temp.Surname)
+		if err != nil {
+			return nil, err
+		}
+		container = append(container, temp)
+	}
+	// If no row is found for the given query, implement a new error stating that.
+	// Return nil as container
+	if len(container) == 0 {
+		return nil, errors.New("No row found for the given query")
+	}
+	return container, nil
+}
+
 // Register a new user into the databases
-// TODO: Devi implementare il check degli utenti per evitare registrazioni doppie.
 func RegisterUserUDB(mail, password, name, surname string) error {
+
+	// Verify that user is not already present
+	users, err := NormalQueryDB("select * from users")
+	if err != nil {
+		return err
+	}
+	for u := range users {
+		if users[u].Mail == mail {
+			return errors.New("user already present")
+		}
+	}
+
+	// Starts registration process
 	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
 	if err != nil {
 		return err

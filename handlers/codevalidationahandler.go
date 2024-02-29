@@ -3,6 +3,7 @@ package handlers
 import (
 	"docshelf/managers"
 	"docshelf/secmanagers"
+	"errors"
 	"html/template"
 	"log"
 	"net/http"
@@ -27,6 +28,27 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Check if user reqeusted a login or a registration.
+	// If cookie is not present or different from login and register.
+	ck, err = r.Cookie("reqtype")
+	if err != nil {
+		log.Fatal(err)
+	}
+	switch ck.Value {
+	case "login":
+		goto login
+	case "register":
+		goto register
+	default:
+		log.Fatal(errors.New(">> error: malformed reqtype cookie. Redirecting request to index"))
+		http.Redirect(w, r, "/", http.StatusFound)
+	}
+
+	// Login code block
+login:
+
+	// Registration code block
+register:
 	// If codes are equal...
 	// ... tries to create a folder with the name and surname
 	ck, err = r.Cookie("name")
@@ -70,7 +92,9 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	goto parsehtml
 
+parsehtml:
 	// ...route to confirm registration
 	t, _ := template.ParseFiles("./static/registration-confirm.html")
 	t.Execute(w, nil)
