@@ -216,7 +216,7 @@
               </a>
             </div>
           </div>
-          <form class="login-form">
+          <form class="login-form" method="post">
             <input
               type="text"
               required="true"
@@ -230,7 +230,7 @@
               placeholder="Password"
               class="login-textinput1 input"
             />
-            <button class="login-login2 button">Login</button>
+            <button class="login-login2 button" type="submit" formaction="/loginrequest">Login</button>
           </form>
         </div>
         <footer class="login-footer">
