@@ -3,12 +3,14 @@ package managers
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"log"
 	"os"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// Function used to check if the db file exists in the location set in the settings.json
 func checkUDBExistance() bool {
 	var location string = Settings{}.Populate().UDBLocation
 	_, err := os.Stat(location)
@@ -42,28 +44,60 @@ func InitUserDatabase() error {
 			log.Default().Fatalf("Cannot sql open %v. This error was found %v: \n", Settings{}.Populate().UDBLocation, err)
 		}
 
-		// Prepare statement to first writing
+		// Prepare statement to write users table
 		statement, err := db.Prepare(`CREATE TABLE "users" (
 			"ID"	INTEGER NOT NULL UNIQUE,
 			"USERMAIL"	TEXT NOT NULL,
 			"PASSWORD"	TEXT NOT NULL,
 			"NAME"	TEXT,
 			"SURNAME"	TEXT,
-			PRIMARY KEY('ID',"ID" AUTOINCREMENT)
+			PRIMARY KEY('ID',"ID")
 		);`)
 		if err != nil {
-			return errors.New("** FATAL ERRROR ** : Some errors occured while preparing the db init stmt :" + err.Error())
+			return errors.New("** FATAL ERRROR ** : Some errors occured while preparing the usr table init stmt :" + err.Error())
 		}
 
 		res, err := statement.Exec()
 		if err != nil {
-			return errors.New("** FATAL ERRROR ** : Some errors occured while executing the db init stmt :" + err.Error())
+			return errors.New("** FATAL ERRROR ** : Some errors occured while executing the usr table init stmt :" + err.Error())
 		}
 
 		_, err = res.RowsAffected()
 		if err != nil {
-			return errors.New("** FATAL ERRROR ** : Some errors occured while retrieving db affected rows  :" + err.Error())
+			return errors.New("** FATAL ERRROR ** : Some errors occured while retrieving usr table affected rows  :" + err.Error())
 		}
+
+		db.Close()
+
+		db, err = sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
+		if err != nil {
+			log.Default().Fatalf("Cannot sql open %v. This error was found %v: \n", Settings{}.Populate().UDBLocation, err)
+		}
+
+		// Prepare statement to write auth tokens table
+		statement, err = db.Prepare(`CREATE TABLE "tokens" (
+			"ID"	INTEGER NOT NULL UNIQUE,
+			"TOKEN"	TEXT NOT NULL,
+			"TTL"	BLOB NOT NULL,
+			PRIMARY KEY("ID","ID")
+		);`)
+
+		if err != nil {
+			return errors.New("** FATAL ERRROR ** : Some errors occured while preparing the tokens table init stmt :" + err.Error())
+		}
+
+		res, err = statement.Exec()
+		if err != nil {
+			return errors.New("** FATAL ERRROR ** : Some errors occured while executing the tokens table init stmt :" + err.Error())
+		}
+
+		_, err = res.RowsAffected()
+		if err != nil {
+			return errors.New("** FATAL ERRROR ** : Some errors occured while retrieving tokens table affected rows  :" + err.Error())
+		}
+
+		db.Close()
+
 	}
 	log.Default().Printf("UDB generated at %v. No exceptions caught.\n", Settings{}.Populate().UDBLocation)
 	return nil
@@ -108,6 +142,30 @@ func NormalQueryDB(query string) ([]UDBrow, error) {
 		return nil, errors.New("No row found for the given query")
 	}
 	return container, nil
+}
+
+func QueryByMail(mail string) ([]UDBrow, error) {
+	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
+	if err != nil {
+		log.Fatal(err)
+	}
+	qry, err := db.Query(fmt.Sprintf(`SELECT * FROM users WHERE usermail="%v"`, mail))
+	if err != nil {
+		log.Fatal(err)
+	}
+	collector := []UDBrow{}
+	for qry.Next() {
+		temp := UDBrow{}
+		qry.Scan(&temp.Id, &temp.Mail, &temp.Password, &temp.Name, &temp.Surname)
+		collector = append(collector, temp)
+	}
+	if len(collector) == 0 {
+		return nil, errors.New("no users found with the given email")
+	}
+	if len(collector) > 1 {
+		return nil, errors.New("!!! SERIOUS WARNING !!!! multiple users found with the given mail. Shutdown the server and check for any duplicates.")
+	}
+	return collector, nil
 }
 
 // Register a new user into the databases

@@ -4,6 +4,7 @@ import (
 	"docshelf/managers"
 	"docshelf/secmanagers"
 	"errors"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -16,8 +17,9 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Verifies if inserted code is the same as the given one
 	var inputCode string = r.FormValue("inputcode")
-	ck, err := r.Cookie("Code")
+	ck, err := r.Cookie("code")
 	if err != nil {
+
 		log.Fatal(err)
 	}
 	var cookieCode string = secmanagers.DecodeSecCk(*ck)
@@ -32,6 +34,7 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 	// If cookie is not present or different from login and register.
 	ck, err = r.Cookie("reqtype")
 	if err != nil {
+		fmt.Println("Error here")
 		log.Fatal(err)
 	}
 	switch ck.Value {
@@ -46,6 +49,8 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Login code block
 login:
+	// Create and set authcookie with ttl
+	// TODO: Implement login
 
 	// Registration code block
 register:

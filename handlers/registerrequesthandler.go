@@ -45,7 +45,7 @@ func RegReqHandler(w http.ResponseWriter, r *http.Request) {
 	// Sending mail with code and setting cookie to responsewriter
 	log.Default().Printf(">> %v - Trying to send code mail...\n", r.RemoteAddr)
 	code := managers.Codegen()
-	codecookie := secmanagers.CreateSecCk("Code", code)
+	codecookie := secmanagers.CreateSecCk("code", code)
 	http.SetCookie(w, &codecookie)
 	err := managers.SendCodeMail(mailOne, code)
 	if err != nil {
