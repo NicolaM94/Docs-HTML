@@ -42,11 +42,15 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Based on the value of the cookie regtype switches between the login or registration
 	switch ck.Value {
+
 	case "login":
 		err = Login(w, r)
 		if err != nil {
-			log.Fatal("Login function : ", err)
+			log.Fatal(err)
 		}
+		// If no error is raised by Login function, reroute to /datadelivery
+		http.Redirect(w, r, "/datadelivery", http.StatusFound)
+
 	case "register":
 		err = Register(w, r)
 		if err != nil {
