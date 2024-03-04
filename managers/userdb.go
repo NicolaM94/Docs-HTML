@@ -205,11 +205,11 @@ func RegisterToken(token string, ttl time.Time) error {
 	if err != nil {
 		log.Fatal("Cannot write token to DB: ", err)
 	}
-	stmt, err := db.Prepare("INSERT INTO tokens(id, token, ttl) values(?,?,?)")
+	stmt, err := db.Prepare("INSERT INTO tokens(token, ttl) values(?,?)")
 	if err != nil {
 		log.Fatal("Cannot prepare token to DB: ", err)
 	}
-	res, err := stmt.Exec(nil, token, ttl)
+	res, err := stmt.Exec(token, ttl)
 	if err != nil {
 		log.Fatal("Cannot execute statement to DB: ", err)
 	}

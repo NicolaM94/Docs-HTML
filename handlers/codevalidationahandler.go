@@ -25,8 +25,6 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 	// Checks for equality
 	if !(inputCode == cookieCode) {
 		// If the codes do not match logs it to the server and redirects to index
-		// TODO: The log here is intended for debugging purposes, to be removed later.
-		log.Default().Printf("InputCode: %v   Cookie Code: %v\n", inputCode, cookieCode)
 		log.Default().Println(r.RemoteAddr, " has got the code wrong. Redirecting to home page...")
 		http.Redirect(w, r, "/", http.StatusAccepted)
 		return
