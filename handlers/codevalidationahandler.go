@@ -4,6 +4,7 @@ import (
 	"docshelf/secmanagers"
 	"errors"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 )
@@ -51,6 +52,9 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatal("Register function : ", err)
 		}
+		// If no error is raised by Register function, proceed to http parsing.
+		t, _ := template.ParseFiles("./static/registration-confirm.html")
+		t.Execute(w, nil)
 
 	// If the cookie does not hold "login" or "register" as value that means something went wrong while assigning its value.
 	// Breaks the verification, logs the error and redirects to index.

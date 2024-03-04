@@ -5,7 +5,6 @@ import (
 	"docshelf/secmanagers"
 	"errors"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -39,6 +38,8 @@ func Register(w http.ResponseWriter, r *http.Request) error {
 	}
 	surname := secmanagers.DecodeSecCk(*ck)
 
+	log.Default().Printf("%v - User requested registration %v %v %v", r.RemoteAddr, email, name, surname)
+
 	// Checks if the user is already present in the database
 	users, err := managers.NormalQueryDB("select * from users")
 	if err != nil {
@@ -60,14 +61,18 @@ func Register(w http.ResponseWriter, r *http.Request) error {
 	} else {
 		folderPath = settings.DocBasePath + "/" + folderPath
 	}
+
 	// Actual check if the folder exists.
 	// The foulder should not exist, so a os.ErrNotExists should be thrown.
 	// If not, raises a critical warning to the logger and returns to index.
-	//TODO : Debug
+	log.Default().Printf("%v - Looking for user folder : %v\n", r.RemoteAddr, folderPath)
 	_, err = os.Stat(folderPath)
-	if !errors.Is(err, os.ErrNotExist) {
-		// TODO: Manage existing folder, the server cannot fault for this
-		return fmt.Errorf("%v Register function - User folder already present for {%v, %v, %v} in %v", r.RemoteAddr, email, name, surname, folderPath)
+	needCreation := false
+	if os.IsNotExist(err) {
+		log.Default().Printf("%v - User folder not present, trying to create one as %v_%v\n", r.RemoteAddr, name, surname)
+		needCreation = true
+	} else {
+		return errors.New("error while checking for the user folder or folder already present. Need to investigate")
 	}
 
 	// If the function reached this point, the user and the user folder should not be present.
@@ -75,22 +80,23 @@ func Register(w http.ResponseWriter, r *http.Request) error {
 	log.Default().Printf("%v - Starting registration for user\n", r.RemoteAddr)
 
 	// Tries to create the folder
-	log.Default().Printf("%v - Creating a folder for user %v %v...\n", r.RemoteAddr, name, surname)
-	err = os.Mkdir(folderPath, os.ModePerm)
-	if err != nil {
-		log.Default().Printf("%v Register function : %v\n", r.RemoteAddr, err)
+	if needCreation {
+		log.Default().Printf("%v - Creating a folder for user %v %v...\n", r.RemoteAddr, name, surname)
+		err = os.Mkdir(folderPath, os.ModePerm)
+		if err != nil {
+			return fmt.Errorf("Register function: %v", err)
+		}
+		log.Default().Printf("%v - User folder created with name %v_%v\n", r.RemoteAddr, name, surname)
 	}
-	log.Default().Printf("%v - User folder created with name %v_%v\n", r.RemoteAddr, name, surname)
 
 	// ... tries to register the user in the udb
+	log.Default().Printf("%v - Registering user into udb as %v %v %v", r.RemoteAddr, email, name, surname)
 	err = managers.RegisterUserUDB(email, password, name, surname)
 	if err != nil {
-		log.Default().Printf("%v Register function : %v\n", r.RemoteAddr, err)
+		return fmt.Errorf("Register function: %v", err)
 	}
 	log.Default().Printf("%v - User %v %v added to UDB\n", r.RemoteAddr, name, surname)
 
-	// ...route to confirm registration
-	t, _ := template.ParseFiles("./static/registration-confirm.html")
-	t.Execute(w, nil)
+	// Returns nil as no errors are catched
 	return nil
 }

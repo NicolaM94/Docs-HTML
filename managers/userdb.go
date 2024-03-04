@@ -166,37 +166,33 @@ func RegisterUserUDB(mail, password, name, surname string) error {
 
 	// Verify that user is not already present
 	users, err := NormalQueryDB("select * from users")
-	if err.Error() == "No row found for the given query" {
-		goto register
-	}
 	if err != nil {
-		return err
+		return fmt.Errorf("RegisterUserDB: %v", err)
 	}
 	if len(users) != 0 {
 		for u := range users {
 			if users[u].Mail == mail {
-				return errors.New("user already present")
+				return fmt.Errorf("RegisterUserDB: %v", errors.New("user already present"))
 			}
 		}
 	}
 
-register:
 	// Starts registration process
 	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
 	if err != nil {
-		return err
+		return fmt.Errorf("RegisterUserDB: %v", err)
 	}
 	stmt, err := db.Prepare("INSERT INTO users(USERMAIL, PASSWORD, NAME, SURNAME) values (?,?,?,?)")
 	if err != nil {
-		return err
+		return fmt.Errorf("RegisterUserDB: %v", err)
 	}
 	res, err := stmt.Exec(mail, password, name, surname)
 	if err != nil {
-		return err
+		return fmt.Errorf("RegisterUserDB: %v", err)
 	}
 	rws, err := res.RowsAffected()
 	if err != nil {
-		return err
+		return fmt.Errorf("RegisterUserDB: %v", err)
 	}
 	log.Default().Print(">> Rows affecteb by db insertion: ", rws)
 	return nil
