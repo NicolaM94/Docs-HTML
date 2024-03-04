@@ -1,29 +1,30 @@
 package handlers
 
 import (
-	"docshelf/managers"
 	"docshelf/secmanagers"
 	"errors"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
-	"os"
 )
 
 // TODO: Debug
 // Responds to /
 func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 
-	// Verifies if inserted code is the same as the given one
+	// Checks if inserted code is the same as the given one
+	// Retrieves form value and cookie "code"
 	var inputCode string = r.FormValue("inputcode")
 	ck, err := r.Cookie("code")
 	if err != nil {
-
 		log.Fatal(err)
 	}
+	// Decodes the secure cookie instance to get its value
 	var cookieCode string = secmanagers.DecodeSecCk(*ck)
+	// Checks for equality
 	if !(inputCode == cookieCode) {
+		// If the codes do not match logs it to the server and redirects to index
+		// TODO: The log here is intended for debugging purposes, to be removed later.
 		log.Default().Printf("InputCode: %v   Cookie Code: %v\n", inputCode, cookieCode)
 		log.Default().Println(r.RemoteAddr, " has got the code wrong. Redirecting to home page...")
 		http.Redirect(w, r, "/", http.StatusAccepted)
@@ -37,70 +38,24 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Error here")
 		log.Fatal(err)
 	}
+
+	// Based on the value of the cookie regtype switches between the login or registration
 	switch ck.Value {
 	case "login":
-		goto login
+		err = Login(w, r)
+		if err != nil {
+			log.Fatal("Login function : ", err)
+		}
 	case "register":
-		goto register
+		err = Register(w, r)
+		if err != nil {
+			log.Fatal("Register function : ", err)
+		}
+
+	// If the cookie does not hold "login" or "register" as value that means something went wrong while assigning its value.
+	// Breaks the verification, logs the error and redirects to index.
 	default:
 		log.Fatal(errors.New(">> error: malformed reqtype cookie. Redirecting request to index"))
 		http.Redirect(w, r, "/", http.StatusFound)
 	}
-
-	// Login code block
-login:
-	// Create and set authcookie with ttl
-	// TODO: Implement login
-
-	// Registration code block
-register:
-	// If codes are equal...
-	// ... tries to create a folder with the name and surname
-	ck, err = r.Cookie("name")
-	if err != nil {
-		log.Fatal(err)
-	}
-	name := secmanagers.DecodeSecCk(*ck)
-	ck, err = r.Cookie("surname")
-	if err != nil {
-		log.Fatal(err)
-	}
-	surname := secmanagers.DecodeSecCk(*ck)
-	var foldername string = name + "_" + surname
-
-	var settings managers.Settings = managers.Settings{}.Populate()
-	if settings.DocBasePath[len(settings.DocBasePath)-1] == '/' {
-		foldername = settings.DocBasePath + foldername + "/"
-	} else {
-		foldername = settings.DocBasePath + "/" + foldername + "/"
-	}
-	err = os.Mkdir(foldername, os.ModePerm)
-	if err != nil {
-		log.Fatal(err)
-		return
-	}
-
-	ck, err = r.Cookie("email")
-	if err != nil {
-		log.Fatal(err)
-	}
-	email := secmanagers.DecodeSecCk(*ck)
-
-	ck, err = r.Cookie("password")
-	if err != nil {
-		log.Fatal(err)
-	}
-	password := secmanagers.DecodeSecCk(*ck)
-
-	// ... tries to register the user in the udb
-	err = managers.RegisterUserUDB(email, password, name, surname)
-	if err != nil {
-		log.Fatal(err)
-	}
-	goto parsehtml
-
-parsehtml:
-	// ...route to confirm registration
-	t, _ := template.ParseFiles("./static/registration-confirm.html")
-	t.Execute(w, nil)
 }

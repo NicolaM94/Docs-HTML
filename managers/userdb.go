@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -46,12 +47,10 @@ func InitUserDatabase() error {
 
 		// Prepare statement to write users table
 		statement, err := db.Prepare(`CREATE TABLE "users" (
-			"ID"	INTEGER NOT NULL UNIQUE,
 			"USERMAIL"	TEXT NOT NULL,
 			"PASSWORD"	TEXT NOT NULL,
-			"NAME"	TEXT,
-			"SURNAME"	TEXT,
-			PRIMARY KEY('ID',"ID")
+			"NAME"	TEXT NOT NULL,
+			"SURNAME"	TEXT NOT NULL
 		);`)
 		if err != nil {
 			return errors.New("** FATAL ERRROR ** : Some errors occured while preparing the usr table init stmt :" + err.Error())
@@ -76,10 +75,8 @@ func InitUserDatabase() error {
 
 		// Prepare statement to write auth tokens table
 		statement, err = db.Prepare(`CREATE TABLE "tokens" (
-			"ID"	INTEGER NOT NULL UNIQUE,
 			"TOKEN"	TEXT NOT NULL,
-			"TTL"	BLOB NOT NULL,
-			PRIMARY KEY("ID","ID")
+			"TTL"	BLOB NOT NULL
 		);`)
 
 		if err != nil {
@@ -105,7 +102,6 @@ func InitUserDatabase() error {
 
 // Base struct to catch udb rows
 type UDBrow struct {
-	Id       int
 	Mail     string
 	Password string
 	Name     string
@@ -130,7 +126,7 @@ func NormalQueryDB(query string) ([]UDBrow, error) {
 	container := []UDBrow{}
 	for rows.Next() {
 		temp := UDBrow{}
-		err = rows.Scan(&temp.Id, &temp.Mail, &temp.Password, &temp.Name, &temp.Surname)
+		err = rows.Scan(&temp.Mail, &temp.Password, &temp.Name, &temp.Surname)
 		if err != nil {
 			return nil, err
 		}
@@ -138,9 +134,6 @@ func NormalQueryDB(query string) ([]UDBrow, error) {
 	}
 	// If no row is found for the given query, implement a new error stating that.
 	// Return nil as container
-	if len(container) == 0 {
-		return nil, errors.New("No row found for the given query")
-	}
 	return container, nil
 }
 
@@ -156,14 +149,14 @@ func QueryByMail(mail string) ([]UDBrow, error) {
 	collector := []UDBrow{}
 	for qry.Next() {
 		temp := UDBrow{}
-		qry.Scan(&temp.Id, &temp.Mail, &temp.Password, &temp.Name, &temp.Surname)
+		qry.Scan(&temp.Mail, &temp.Password, &temp.Name, &temp.Surname)
 		collector = append(collector, temp)
 	}
 	if len(collector) == 0 {
 		return nil, errors.New("no users found with the given email")
 	}
 	if len(collector) > 1 {
-		return nil, errors.New("!!! SERIOUS WARNING !!!! multiple users found with the given mail. Shutdown the server and check for any duplicates.")
+		return nil, errors.New("!!! SERIOUS WARNING !!!! multiple users found with the given mail. Shutdown the server and check for any duplicates")
 	}
 	return collector, nil
 }
@@ -173,25 +166,31 @@ func RegisterUserUDB(mail, password, name, surname string) error {
 
 	// Verify that user is not already present
 	users, err := NormalQueryDB("select * from users")
+	if err.Error() == "No row found for the given query" {
+		goto register
+	}
 	if err != nil {
 		return err
 	}
-	for u := range users {
-		if users[u].Mail == mail {
-			return errors.New("user already present")
+	if len(users) != 0 {
+		for u := range users {
+			if users[u].Mail == mail {
+				return errors.New("user already present")
+			}
 		}
 	}
 
+register:
 	// Starts registration process
 	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
 	if err != nil {
 		return err
 	}
-	stmt, err := db.Prepare("INSERT INTO users(ID, USERMAIL, PASSWORD, NAME, SURNAME) values (?,?,?,?,?)")
+	stmt, err := db.Prepare("INSERT INTO users(USERMAIL, PASSWORD, NAME, SURNAME) values (?,?,?,?)")
 	if err != nil {
 		return err
 	}
-	res, err := stmt.Exec(nil, mail, password, name, surname)
+	res, err := stmt.Exec(mail, password, name, surname)
 	if err != nil {
 		return err
 	}
@@ -200,5 +199,30 @@ func RegisterUserUDB(mail, password, name, surname string) error {
 		return err
 	}
 	log.Default().Print(">> Rows affecteb by db insertion: ", rws)
+	return nil
+}
+
+// Register a new auth token to db
+func RegisterToken(token string, ttl time.Time) error {
+
+	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
+	if err != nil {
+		log.Fatal("Cannot write token to DB: ", err)
+	}
+	stmt, err := db.Prepare("INSERT INTO tokens(id, token, ttl) values(?,?,?)")
+	if err != nil {
+		log.Fatal("Cannot prepare token to DB: ", err)
+	}
+	res, err := stmt.Exec(nil, token, ttl)
+	if err != nil {
+		log.Fatal("Cannot execute statement to DB: ", err)
+	}
+	rws, err := res.RowsAffected()
+	if err != nil {
+		log.Fatal("Cannot retrieve rows affected by DB call: ", err)
+	}
+	if rws == 0 {
+		log.Fatal("No rows affected after DB insertion. Check for errors.")
+	}
 	return nil
 }
