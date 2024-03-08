@@ -184,16 +184,33 @@
         </header>
         <div class="data-container3">
           <div class="data-container4">
-            <h1 class="data-text10">Benvenuto {{.Username}}</h1>
+            <span style="display: inline-flex;align-items: center; column-gap: 30px;">
+              <h1 class="data-text10">Benvenuto {{.Username}}</h1> 
+              <form action="/searchdata" class="searchform" method="post">
+                <input type="text" placeholder="Cerca..." class="searchinput" name=searchinput>
+                <button class="searchbutton" type="submit" formaction="/searchdata">Vai</button>
+              </form>
+              
+            </span>
+            
             <ul class="data-ul list">
-              <li class="data-li list-item">
-                <span class="data-text11">Text</span>
+              {{range .Documents}}
+              <li class="data-li list-item" style="margin-bottom: 10px;">
+                <div style="float: left;margin-right: 10px;margin-left: 10px;"><img src="{{.Icon}}" alt="icon" style="height: 45px; width: 45px; "></div>
+                <span><h5 style="padding-top: 5px;margin:5px;margin-bottom:5px">{{.Name}}</h5>&emsp14;</span>
+                <span style="font-size: medium;"><i>Tipo:</i> {{.Type}}</span>
+                <span style="margin-left: 20px;font-size: medium;">&emsp14;<i>Dimensione:</i> {{.Size}}</span>
+                <span style="margin-left: 20px;font-size: medium;">&emsp14;<i>Data:</i> {{.Creation}}</span>
+                <span style="margin-left: 20px;color: rgb(23, 6, 253);font-size: medium;font-weight:bold; background-color:rgba(115, 136, 255, 0.521); border-radius:10px"><a href=/download?{{.Name}}>&emsp14;&emsp14;&emsp14;> Download&emsp14;&emsp14;&emsp14;</a></span>
+                
+                
               </li>
+              {{end}}
             </ul>
           </div>
           <div class="data-container5">
             <h1 class="data-text12">
-              <span>Tools</span>
+              <span>Strumenti</span>
               <br />
             </h1>
           </div>

@@ -30,7 +30,7 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Check if user reqeusted a login or a registration.
+	// Check if user requested a login or a registration.
 	// If cookie is not present or different from login and register.
 	ck, err = r.Cookie("reqtype")
 	if err != nil {
@@ -40,7 +40,6 @@ func CodeValidationHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Based on the value of the cookie regtype switches between the login or registration
 	switch ck.Value {
-
 	case "login":
 		err = Login(w, r)
 		if err != nil {

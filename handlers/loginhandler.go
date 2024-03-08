@@ -29,6 +29,10 @@ func LoginReqHanlder(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusFound)
 	}
 
+	// Set cookie mail for futher login
+	ckmail := secmanagers.CreateSecCk("email", mailinput)
+	http.SetCookie(w, &ckmail)
+
 	// If the password match, send authcode
 	// Set code as cookie for further verification
 	var code string = managers.Codegen()

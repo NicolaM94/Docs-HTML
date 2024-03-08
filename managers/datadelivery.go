@@ -10,8 +10,9 @@ import (
 type Document struct {
 	Name     string
 	Creation string
-	Weight   string
+	Size     string
 	Type     string
+	Icon     string
 }
 
 // Parse the type of the file
@@ -63,7 +64,7 @@ func ParseFileSize(wgt int64) string {
 }
 
 // Collects documents from the userfolder, used in data delivery after login
-func CollectDocuments(userFolder string) ([]Document, error) {
+func CollectDocuments(userFolderName string) ([]Document, error) {
 	// Init settings struct and links to the user folder
 	// Normalize the path
 	var docbasepath = Settings{}.Populate().DocBasePath
@@ -73,7 +74,7 @@ func CollectDocuments(userFolder string) ([]Document, error) {
 
 	var collector []Document
 	// Loops over the folder to collect documents
-	filepath.WalkDir(docbasepath+userFolder, func(path string, d fs.DirEntry, err error) error {
+	filepath.WalkDir(docbasepath+userFolderName, func(path string, d fs.DirEntry, err error) error {
 		if !d.IsDir() {
 			temp := Document{}
 			temp.Name = d.Name()
@@ -84,7 +85,8 @@ func CollectDocuments(userFolder string) ([]Document, error) {
 			}
 			temp.Creation = info.ModTime().Format("2006-01-02 15:04:05")
 			temp.Type = ParseFileType(info.Name())
-			temp.Weight = ParseFileSize(info.Size())
+			temp.Size = ParseFileSize(info.Size())
+			temp.Icon = "./fileicons/" + strings.ToLower(temp.Type) + ".png"
 			collector = append(collector, temp)
 		}
 		return nil
