@@ -243,10 +243,11 @@
   height: var(--dl-size-size-xsmall);
 }
 .data-container3 {
-  flex: 0 0 auto;
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  align-self: center;
+  align-content: center;
 }
 .data-container4 {
   flex: 0 0 auto;
@@ -265,7 +266,14 @@
   margin-left: var(--dl-space-space-threeunits);
   margin-bottom: var(--dl-space-space-unit);
 }
-
+.downloadbutton {
+  margin-left: 20px;
+  color: rgb(23, 6, 253);
+  font-size: medium;
+  font-weight: bold;
+  background-color: rgba(115, 136, 255, 0.521);
+  border-radius: 10px;
+}
 .searchform {
   display: inline-flex;
   align-items: center;
