@@ -222,3 +222,17 @@ func RegisterToken(token string, ttl time.Time) error {
 	}
 	return nil
 }
+
+func IsTokenPresent(token string) (bool) {
+	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
+	if err != nil {
+		return false, err
+	}
+	rows, err := db.Prepare(fmt.Sprintf("select * from tokens where token=%v", token))
+	res, err := rows.Exec(token)
+	if err != nil {
+		return false, err
+	}
+	res.
+	//TODO: Finisci qua
+}

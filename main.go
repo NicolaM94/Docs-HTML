@@ -38,6 +38,7 @@ func main() {
 	static := http.FileServer(http.Dir("./static"))
 	mux := http.NewServeMux()
 	mux.Handle("/", static)
+	mux.HandleFunc("/download", handlers.DownloadHandler)
 	mux.HandleFunc("/searchdata", handlers.SearchHandler)
 	mux.HandleFunc("/datadelivery", handlers.DataDeliveryHandler)
 	mux.HandleFunc("/loginrequest", handlers.LoginReqHanlder)
