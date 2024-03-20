@@ -4,6 +4,7 @@ import (
 	"docshelf/managers"
 	"docshelf/secmanagers"
 	"errors"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -33,7 +34,9 @@ func DownloadHandler(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, nil)
 	}
 	authCookie := secmanagers.DecodeSecCk(*authCk)
-	if !managers.IsTokenPresent(authCookie) {
+	tokenPresence, err := managers.IsTokenPresent(authCookie)
+	if err != nil || !tokenPresence {
+		fmt.Println("Token error: ", err)
 		t, _ := template.ParseFiles("./static/loggedout.html")
 		t.Execute(w, nil)
 	}

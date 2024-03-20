@@ -25,6 +25,7 @@
         line-height: 1.15;
         color: var(--dl-color-gray-black);
         background-color: var(--dl-color-gray-white);
+        
 
       }
     </style>
@@ -202,7 +203,7 @@
                 <span style="margin-left: 20px;font-size: medium;">&emsp14;<i>Dimensione:</i> {{.Size}}</span>
                 <span style="margin-left: 20px;font-size: medium;">&emsp14;<i>Data:</i> {{.Creation}}</span>
                 <span class="downloadbutton"><a href=/download?{{.Name}}>&emsp14;&emsp14;&emsp14;> Download&emsp14;&emsp14;&emsp14;</a></span>
-                
+                <span class="sendbutton"><a href="/sendmail?{{.Name}}">&emsp14;&emsp14;&emsp14;> Invia per mail&emsp14;&emsp14;&emsp14;</a></span>
                 
               </li>
               {{end}}

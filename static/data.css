@@ -274,6 +274,16 @@
   background-color: rgba(115, 136, 255, 0.521);
   border-radius: 10px;
 }
+
+.sendbutton {
+  margin-left: 20px;
+  color: rgb(97, 255, 195);
+  font-size: medium;
+  font-weight: bold;
+  background-color: rgba(2, 95, 72, 0.863);
+  border-radius: 10px;
+}
+
 .searchform {
   display: inline-flex;
   align-items: center;
@@ -299,20 +309,23 @@
 
 
 
-
-
-
 .data-ul {
   width: 1603px;
-  height: 655px;
+  height: 675px;
   align-self: flex-start;
-  margin-top: 0px;
+  margin-top: var(--dl-space-space-unit);
   margin-left: var(--dl-space-space-threeunits);
   margin-right: 0px;
   padding-left: 0px;
+  margin-bottom: var(--dl-space-space-twounits);
   border-radius: var(--dl-radius-radius-radius8);
   margin-bottom: 0px;
   background-color: rgba(82, 244, 171, 0.12);
+  overflow: auto;
+  scrollbar-width: 20px;
+  scrollbar-base-color: transparent;
+  scrollbar-color: rgb(145, 145, 255) rgb(73, 73, 255);
+
 }
 .data-li {
   font-size: 16px;
@@ -357,7 +370,7 @@
   position: fixed;
   max-width: var(--dl-size-size-maxwidth);
   align-self: center;
-  margin-top: 0px;
+  margin-top: var(--dl-space-space-twounits);
   align-items: center;
   margin-bottom: var(--dl-space-space-unit);
   flex-direction: row;

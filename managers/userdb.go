@@ -198,6 +198,11 @@ func RegisterUserUDB(mail, password, name, surname string) error {
 	return nil
 }
 
+type TokenEntry struct {
+	Token string
+	Ttl   string
+}
+
 // Register a new auth token to db
 func RegisterToken(token string, ttl time.Time) error {
 
@@ -223,16 +228,23 @@ func RegisterToken(token string, ttl time.Time) error {
 	return nil
 }
 
-func IsTokenPresent(token string) (bool) {
+// Function to check wheater the token is present in the database
+func IsTokenPresent(token string) (bool, error) {
 	db, err := sql.Open("sqlite3", Settings{}.Populate().UDBLocation)
 	if err != nil {
 		return false, err
 	}
-	rows, err := db.Prepare(fmt.Sprintf("select * from tokens where token=%v", token))
-	res, err := rows.Exec(token)
+	query, err := db.Query(fmt.Sprintf(`select * from tokens where token="%v"`, token))
 	if err != nil {
+		return false, fmt.Errorf("query error: %v", err)
+	}
+
+	counter := 0
+	for query.Next() {
+		counter++
+	}
+	if counter != 1 {
 		return false, err
 	}
-	res.
-	//TODO: Finisci qua
+	return true, nil
 }
