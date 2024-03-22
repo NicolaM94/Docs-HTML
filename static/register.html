@@ -87,6 +87,7 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
     <link rel="stylesheet" href="./style.css" />
@@ -190,7 +191,7 @@
             </div>
           </div>
         </header>
-        <div class="register-container3">
+        <div class="register-container3" id="registervue">
           <div class="register-container4">
             <img
               alt="image"
@@ -199,7 +200,7 @@
             />
             <h1 class="register-text10">Registrati</h1>
           </div>
-          <div class="register-container5">
+          <div class="register-container5" >
             <form class="register-form" method="post">
               <input
                 type="text"
@@ -208,6 +209,8 @@
                 autofocus="true"
                 placeholder="Nome"
                 class="register-textinput input"
+                v-model = "name"
+                @change="checkName"
               />
               <input
                 name="surnamefield"
@@ -216,6 +219,8 @@
                 autofocus="true"
                 placeholder="Cognome"
                 class="register-textinput1 input"
+                v-model = "surname"
+                @change="checkSurname"
               />
               <input
                 name = "emailfield"
@@ -224,6 +229,8 @@
                 autofocus="true"
                 placeholder="E-mail"
                 class="register-textinput2 input"
+                v-model="email"
+                @change="checkEmail"
               />
               <input
                 name="emailagainfield"
@@ -232,6 +239,8 @@
                 autofocus="true"
                 placeholder="Ripeti e-mail"
                 class="register-textinput3 input"
+                v-model = "emailagain"
+                @change = "checkAgainEmail"
               />
               <input
                 name="passfield"
@@ -240,6 +249,7 @@
                 autofocus="true"
                 placeholder="Password"
                 class="register-textinput4 input"
+                v-model = "password"
               />
               <input
                 name = "passagainfield"
@@ -248,15 +258,19 @@
                 autofocus="true"
                 placeholder="Ripeti password"
                 class="register-textinput5 input"
+                v-model = "passwordagain"
+                @input = "checkPasswordAgain"
               />
-              <button class="register-register2 button" formaction="/registerrequest">
+              <button v-if="buttonstatus" type="submit" class="register-register2 button" formaction="/registerrequest">
                 <span>
                   <span>Registrati</span>
                   <br />
                 </span>
               </button>
             </form>
+            
             </div>
+            <p style="color: red;font-weight: 500;">{{errormessage}}</p>
         </div>
         <footer class="register-footer">
           <h1 class="register-text14">DocShelf</h1>
@@ -307,5 +321,6 @@
         prevScrollpos = currentScrollPos;
       }
       </script>
+      <script src="./vueapps/register.js"></script>
   </body>
 </html>

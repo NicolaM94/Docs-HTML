@@ -91,7 +91,9 @@
     <link
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
+    />  
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
   </head>
   <body>
     <link rel="stylesheet" href="./style.css" />
@@ -200,7 +202,8 @@
             </div>
           </div>
           <span class="index-text15">
-            <span>
+            <span id="indexApp">
+              <p @click="handleEvent">ciao</p>
               Il servizio per la condivisione di documenti, pensato e creato per
               professionisti e piccole/medie imprese.
             </span>
@@ -533,6 +536,6 @@
         prevScrollpos = currentScrollPos;
       }
       </script>
-
+      <script src="./vueapps/index.js"></script>
   </body>
 </html>
