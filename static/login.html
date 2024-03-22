@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
-
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <style data-tag="reset-style-sheet">
       html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
     </style>
@@ -182,7 +182,7 @@
             </div>
           </div>
         </header>
-        <div class="login-container3">
+        <div class="login-container3"  id="loginvue">
           <div class="login-container4">
             <img
               src="public/generic-400h.png"
@@ -191,13 +191,13 @@
             />
           </div>
           <div class="login-container5">
-            <div class="login-container6">
+            <div class="login-container6" >
               <img
                 alt="image"
                 src="public/rgba6367511-ezgif.com-crop-200h.gif"
                 class="login-image3"
               />
-              <h1 class="login-text10">
+              <h1 class="login-text10" >
                 <span>Login</span>
                 <br />
               </h1>
@@ -224,7 +224,10 @@
               autofocus="true"
               placeholder="E-mail"
               class="login-textinput input"
+              v-model="emailfield"
+              @change="checkemailerror"
             />
+            <p style="color: red;font-size: 10px" v-show="emailerror">Inserire una mail valida</p>
             <input
               name="passwordinput"
               type="password"
@@ -232,7 +235,7 @@
               placeholder="Password"
               class="login-textinput1 input"
             />
-            <button class="login-login2 button" type="submit" formaction="/loginrequest">Login</button>
+            <button class="login-login2 button" type="submit" formaction="/loginrequest" :disabled="emailerror">Login</button>
           </form>
         </div>
         <footer class="login-footer">
@@ -270,5 +273,6 @@
       defer=""
       src="https://unpkg.com/@teleporthq/react-components/dist/animate-on-reveal.umd.js"
     ></script>
+    <script src="./vueapps/loginvue.js"></script>
   </body>
 </html>
